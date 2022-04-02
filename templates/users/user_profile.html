@@ -1,0 +1,353 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %} {% translate "Profile of " %} {{user.username}}{% endblock title %}
+{% block css %}
+<style>
+.btnn{
+    cursor:pointer;
+    border-radius:10px;
+    background-color:#0d6efd;
+    color:white;
+    padding:10px;
+    -webkit-user-select: none;
+    text-decoration:none;
+}
+btnn:hover{
+    background-color:#0d6efd;
+    color:white;
+}
+</style>
+{% endblock css %}
+{% block content %}
+            <!-- Start Content Page Box Area -->
+            <div class="content-page-box-area">
+                <div class="my-profile-inner-box">
+                    <div class="profile-cover-image">
+                        <a href="#">
+                            <img src="{% static 'images/my-profile-bg.jpg' %}  " alt="image">
+                        </a>
+                    </div>
+                   
+                    <div class="profile-info-box">
+                        {% if messages %}
+                        {% for message in messages  %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                        <div class="inner-info-box d-flex justify-content-between align-items-center">
+                            <div class="info-text ms-3">
+
+                                <div style="border-radius:50%;object-fit: cover;width:140px;height:140px;background-image: url('{{user.profile.pp}}');background-size: cover;">
+                                    {% if not user.profile.hide_is_online == True  %}
+                                {% if user.profile.is_online == True  %}
+                                <span style="border-radius:25px;height:20px;width:20px;background-color:#1DD217;position: absolute;" class="status-online"></span>
+                                {% endif %}
+                                {% endif %}
+                                  
+                                  <!--  <img style="" width=140 height=140 src="{{ser.profile.pp}}" class="rounded-circle" id="avatar" alt="image">   -->  
+                                </div>
+                                <form name="upload-image" id="uploadPP">
+                                    <input type="file" accept="image/png, image/gif, image/jpeg, image/jpg" style="display:none;" id="uploadFile"/>
+                                </form>
+
+                                <h3><a href="#">{{user.username}}</a></h3>
+                                {% if user.profile.mail %}
+                                    <span><a href="#">{{user.profile.mail}}</a></span>
+                                    <br>
+                                {% endif %}
+                                 <br>   
+                                    {% if user.profile.is_private == True %}
+                                    
+                                        {% if already_friend == True %}
+                                            <small class="btnn" name="{{ user.username }}" id="add-friend" style="padding-left:15px;">{{friend_btn}}</small>
+                                        {% else %}
+                                            <small class="btnn" name="{{ user.username }}" id="send-friend-req">{{req_btn}} </small>
+
+                                        {% endif %}
+
+                                    {% else %}
+                                        <small class="btnn" name="{{ user.username }}" id="add-friend" style="padding-left:15px;">{{friend_btn}}</small>
+                                    {% endif %}   
+                                
+                                <small style="margin-right:5px;"></small>
+                                <small class="btnn" name="{{ user.username }}" id="follow" >{{follow_btn_text}}</small>
+                            </div>
+                            <ul class="statistics">
+                                <li>
+                                    <a href="#">
+                                        {% if user.profile.only_friends == True %}
+                                            {% if is_friend == True %}
+                                                
+                                            {% else %}
+                                            <h5>{% translate "gizli" %}</h5>
+                                            {% endif %}
+                                             {% else %}
+                                             <span class="item-number">{{ user.posts.all.count }}</span> 
+
+                                             {% endif %}
+                                        <span class="item-text">{% translate 'Posts'%}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="item-number">{{ user.posts.all.hashtags.count }}</span> 
+                                        <span class="item-text">{% translate 'Hashtags' %}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="profile-list-tabs">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="timeline-tab" data-bs-toggle="tab" href="#timeline" role="tab" aria-controls="timeline">Timeline</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="timeline" role="tabpanel">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-12">
+                                <aside class="widget-area">
+                                    <div class="widget widget-advertisement">
+                                        <h3 class="widget-title">Advertisement</h3>
+        
+                                        <div class="advertisement-image">
+                                            <a href="#"><img src="{% static 'images/advertisement.jpg' %} " alt="image"></a>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="news-feed-area">
+                                    {% if user.profile.only_friends == True %}
+                                            {% if is_friend == True %}
+                                                {% for post in user.posts.all  %}
+                                                <div class="news-feed news-feed-post">
+                                                    <div class="post-header d-flex justify-content-between align-items-center">
+                                                        <div style="border-radius:50%;object-fit:cover;width:100px;height:75px;background-image: url('{{post.user.profile.pp}}');background-size: cover;"> </div>
+                                                            
+                                                        <div class="info ms-3">
+                                                            <span class="name"><a href="my-profile.html">{{post.user.username}}</a></span>
+                                                            <span class="small-text"><a href="#">{{post.date_added|date:'D d/m/Y'}}</a></span>
+                                                        </div>
+                                                    
+                                                        <div class="dropdown">
+                                                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='bx bx-dots-horizontal-rounded' ></i></button>
+                                                            <ul class="dropdown-menu">
+                                                                {% if request.user == post.user %}
+                                                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'post-edit' post.id %}"><i class='bx bx-edit-alt' ></i> {% translate  'Edit Post' %}</a></li>
+                                                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'post-delete' post.id %}"><i class='bx bx-trash-alt' ></i>{% translate  'Delete Post' %} </a></li>
+                                                                {% else %}
+                                                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'post-detail' post.id %}"><i class='bx bx-detail'></i>{% translate "Detail Page" %}</a></li>
+            
+                                                                {% endif %}
+                                                            
+                                                            
+                                                            
+                                                            </ul>
+                                                        </div>
+                                                    
+                                                    </div>
+                                
+                                                    <div class="post-body">
+                                                        <p>{{post.content}}</p>
+                                                    
+                                                        <ul class="post-meta-wrap d-flex justify-content-between align-items-center">
+                                                            <li class="post-react">
+                                                                <p>
+                                                                    {% for hash in post.hashtags.all %}
+                                                                    <a style="color:#0d6efd" href="{% url 'hashtag' hash.name %}">{{hash.name}}</a> , 
+                                                                    {% endfor %}
+                                                                </p>                               
+                                                            </li> 
+                                                            
+                                                        </ul>
+                                                        
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            {% else %}
+                                            <h5>You need to be friends to see her/his posts</h5>
+                                            {% endif %}
+                                    {% else %}
+                                    {% for post in user.posts.all  %}
+
+                                    <div class="news-feed news-feed-post">
+                                        <div class="post-header d-flex justify-content-between align-items-center">
+                                            <div style="border-radius:50%;object-fit:cover;width:100px;height:75px;background-image: url('{{post.user.profile.pp}}');background-size: cover;"> </div>
+                                                
+                                            <div class="info ms-3">
+                                                <span class="name"><a href="my-profile.html">{{post.user.username}}</a></span>
+                                                <span class="small-text"><a href="#">{{post.date_added|date:'D d/m/Y'}}</a></span>
+                                            </div>
+                                        
+                                            <div class="dropdown">
+                                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='bx bx-dots-horizontal-rounded' ></i></button>
+                                                <ul class="dropdown-menu">
+                                                    {% if request.user == post.user %}
+                                                    <li><a class="dropdown-item d-flex align-items-center" href="{% url 'post-edit' post.id %}"><i class='bx bx-edit-alt' ></i> {% translate  'Edit Post' %}</a></li>
+                                                    <li><a class="dropdown-item d-flex align-items-center" href="{% url 'post-delete' post.id %}"><i class='bx bx-trash-alt' ></i>{% translate  'Delete Post' %} </a></li>
+                                                    {% else %}
+                                                    <li><a class="dropdown-item d-flex align-items-center" href="{% url 'post-detail' post.id %}"><i class='bx bx-detail'></i>{% translate "Detail Page" %}</a></li>
+
+                                                    {% endif %}
+                                                
+                                                
+                                                
+                                                </ul>
+                                            </div>
+                                        
+                                        </div>
+                    
+                                        <div class="post-body">
+                                            <p>{{post.content}}</p>
+                                        
+                                            <ul class="post-meta-wrap d-flex justify-content-between align-items-center">
+                                                <li class="post-react">
+                                                    <p>
+                                                        {% for hash in post.hashtags.all %}
+                                                        <a style="color:#0d6efd" href="{% url 'hashtag' hash.name %}">{{hash.name}}</a> , 
+                                                        {% endfor %}
+                                                    </p>                               
+                                                </li> 
+                                                
+                                            </ul>
+                                            
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                    {% endif %}
+                                    
+                                    {% if not user.posts %}
+                                    <div class="load-more-posts-btn">
+                                        <a href="#"><i class='bx bxs-bowl-hot' ></i> {% translate  "No post found" %}.</a>
+                                    </div>
+                                    {% else %}
+                                    {% endif %}
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div> 
+
+        {% endblock content %}
+        {% block js %}   
+        <script type="text/javascript">
+            $("#uploadTrigger").click(function(){
+               $("#uploadFile").click();
+            });
+            $('#uploadFile').on('change', function(){
+                var data = new FormData();
+                data.append("image", $("input[id^='uploadFile']")[0].files[0]);
+                data.append("csrfmiddlewaretoken", "{{ csrf_token }}");       
+                data.append("operation", "add_pp");       
+             
+                    $.ajax({
+                        method: "POST",
+                        url: "{% url 'profile' %}",
+                        processData: false,
+                        contentType: false,
+                        mimeType: "multipart/form-data",
+                        data: data,
+                        success: function(a) {
+                        let object = JSON.parse(a) 
+                            $( "#avatar" ).load(window.location.href + " #avatar" );
+                            window.location.reload();
+                            console.log(object['mesage'])
+                        },
+            
+                    })
+                    
+            }); 
+             
+            </script>
+            
+            <script type="text/javascript">
+                //send-friend-req Action 
+                $('#add-friend').click(function(){
+                 $.ajax({
+                          type: "POST",
+                          url: "{% url 'add_friend' %}",
+                          data: {'username': $(this).attr('name'), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                          dataType: "json",
+                          success: function(response) {
+                               if(response.status==true){
+                               $( "#add-friend" ).html('Friend ✔️');
+                               console.log(response.status)
+                               }
+                               else if(response.status==false){
+                                $( "#add-friend").html('Add Friend');
+                                console.log(response.status)
+                               }
+                           },
+                           error: function(rs, e) {
+                            
+                            console.log('error')
+                           }
+                     }); 
+               });
+            </script>
+            <script type="text/javascript">
+                //send-friend-req Action 
+                $('#send-friend-req').click(function(){
+                 $.ajax({
+                          type: "POST",
+                          url: "{% url 'send_friend_request' %}",
+                          data: {'username': $(this).attr('name'), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                          dataType: "json",
+                          success: function(response) {
+                               if(response.status=='requested'){
+                               $( "#send-friend-req" ).html('Unrequest');
+                               $( "#follow-count").html(response) 
+                               console.log(response.status)
+                               }
+                               else if(response.status=='unrequested'){
+                                 $( "#send-friend-req" ).html('Send Request');
+                                 $( "#follow-count").html(response) 
+                                 console.log(response.status)
+                               }
+                           },
+                           error: function(rs, e) {
+                            
+                            console.log('error')
+                           }
+                     }); 
+               });
+            </script> 
+                        
+            <script type="text/javascript">
+                //Follow Action 
+                $('#follow').click(function(){
+                $.ajax({
+                        type: "POST",
+                        url: "{% url 'follow' %}",
+                        data: {'username': $(this).attr('name'), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                        dataType: "json",
+                        success: function(response) {
+                            if(response.followed==true){
+                            $( "#follow" ).html('Following');
+                            $( "#follow-count").html(response.likes_count) 
+                            console.log(response.followed)
+                            }
+                            else if(response.followed==false){
+                                $( "#follow" ).html('Follow');
+                                $( "#follow-count").html(response.likes_count) 
+                                console.log(response.followed)
+                            }
+                        },
+                        error: function(rs, e) {
+                            
+                            console.log('error')
+                        }
+                    }); 
+            });
+            </script> 
+            
+        {% endblock js %}
+                    

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% translate "Search for" %} {{q}} {% endblock title %}
+{% block content %}
+<!-- Start Content Page Box Area -->
+<div class="content-page-box-area">
+    <div class="row">
+        <div class="col-lg-3 col-md-12">
+           
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="news-feed-area">
+            <br>
+            <h5 style="text-align:center">{% translate "Postswith" %}  {{hash_name}} </h5></h5>
+                <br>
+
+                {% for post in search_all  %}
+                 {{post}}
+                {% endfor %}
+                {% if not search_all %}
+                <div class="load-more-posts-btn">
+                    <a href="#"><i class='bx bxs-bowl-hot' ></i> {% translate "There is no result with this word." %}</a>
+                </div>
+            </div>
+        {% endif %}
+        
+         
+        </div>
+    </div>
+ 
+        
+    </div>
+</div>
+{% endblock content %}
+{% block js %}
+
+{% endblock js %}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block css %}
+<style>
+
+    /* CSS */
+    .button-35 {
+      align-items: center;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+      box-sizing: border-box;
+      color: #121212;
+      cursor: pointer;
+      display: inline-flex;
+      flex: 1 1 auto;
+      font-family: Inter,sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      justify-content: center;
+      line-height: 1;
+      margin: 0;
+      outline: none;
+      padding: 1rem 1.2rem;
+      text-align: center;
+      text-decoration: none;
+      transition: box-shadow .2s,-webkit-box-shadow .2s;
+      white-space: nowrap;
+      border: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    
+    .button-35:hover {
+      box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+    }
+</style>
+{% endblock css %}
+{% load account socialaccount %}
+{% load socialaccount %}
+{% block content %}
+   <div class="profile-authentication-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12" >
+                <div class="login-form">
+                    {% if messages %}
+                        {% for message in messages  %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <div class="login-form">
+                        <h2>{% translate 'Login'%}</h2>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>{% translate 'Username'%}</label>
+                                <input type="text" name="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>{% translate 'Password'%}</label>
+                                <input type="password" name="password" class="form-control">
+                            </div>
+                            <div class="remember-me-wrap d-flex justify-content-between align-items-center">
+                                <p>
+                                    <input type="checkbox" id="test1">
+                                    <label for="test1">Remember me</label>
+                                </p>
+                                <div class="lost-your-password-wrap">
+                                    <a href="forgot-password.html" class="lost-your-password">{% translate 'Forgot password '%}?</a>
+                                </div>
+                            </div>
+                            <button type="submit" class="default-btn">{% translate 'Login'%}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12" style="border-left:1px solid black; text-align:center">
+                <div class="login-form" style="height:100%;padding-top:25px;">
+                <h2 style="margin-top:15%;">{% translate "Or"%}</h2>  
+                {% get_providers as socialaccount_providers %}
+                    {% if socialaccount_providers %}
+                        <div class="socialaccount_ballot">   
+                        {% for provider in socialaccount_providers %}
+                            {% if provider.id == "openid" %}
+                                {% for brand in provider.get_brands %}
+                                    <a  title="{{brand.name}}" href="{% provider_login_url provider.id openid=brand.openid_url process=process %}">
+                                        <button class="button-35" role="button">
+                                            <i style="font-size:25px" class='bx bxl-google '></i>
+                                            {% translate "Continue with" %} {{brand.name}}
+                                        </button></a><br><br>
+                                {% endfor %}
+                            {% endif %}
+                            <a title="{{brand.name}}" href="{% provider_login_url provider.id openid=brand.openid_url process=process %}">
+                            <button class="button-35" role="button">
+                            <i style="font-size:25px" class='bx bxl-{{provider.name}} '></i>
+                            {% translate "Continue with" %} {{provider.name}}
+                            </button></a><br><br>
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                    {% endif %}
+                </div>
+             </div>
+        </div>
+    </div>
+    <div class="home-btn-icon">
+        <a href="{% url 'home'%}"><i class="flaticon-home"></i></a>
+    </div>
+</div>
+<!-- End Preloader Area -->
+{% endblock content %}
+     

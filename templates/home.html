@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% translate "Home" %}{% endblock title %}
+{% block content %}
+<div class="content-page-box-area">
+    <div class="row">
+        <div class="col-lg-3 col-md-12">
+            <aside class="widget-area">
+                {% if request.user.is_authenticated %}
+                <div   class="widget widget-view-profile">
+                    <div class="profile-box d-flex justify-content-between align-items-center">
+                        <div style="border-radius:50%;object-fit:cover;width:180px;height:105px;background-image: url('{{request.user.profile.pp}}');background-size: cover;"> </div>
+                        <div class="text ms-2">
+                            <h3><a href="#">{{request.user.username.title}}</a></h3>
+                            <span>@{{request.user.username}}</span>
+                        </div>
+                    </div>
+                    <ul class="profile-statistics">
+                         
+                        <li>
+                            <a href="#">
+                                <span class="item-number">{{request.user.posts.all.count}}</span> 
+                                <span class="item-text">{% translate "Posts" %}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="item-number">{{request.user.posts.hashs.count}}</span> 
+                                <span class="item-text">{% translate "Hashtags" %}</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="profile-btn">
+                        <a href="{% url 'profile' %}" class="default-btn">{% translate "View Profile" %}</a>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="widget widget-advertisement">
+                    <h3 class="widget-title">{% translate "Advertisement" %}</h3>
+
+                    <div class="advertisement-image">
+                        <a href="#"><img src="{% static 'images/advertisement.jpg' %} " alt="image"></a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="news-feed-area">
+                {% if messages %}
+                {% for message in messages  %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+            
+                <div class="news-feed news-feed-form">
+                    {% if request.user.is_authenticated %}
+                    <h3 class="news-feed-title">{% translate "Create new Post " %}</h3>
+
+                    <form method="POST">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            
+                            {{form}} 
+                        </div>
+                        <ul class="button-group d-flex justify-content-between align-items-center">
+                            
+                            <li style="cursor:pointer;" class="video-btn">
+                                <p  id="hashs"><i style="color:red;font-size:25px;" class='bx bx-hash' ></i>{% translate "Select Hashtags" %}</p>
+                                
+                            </li>
+                            
+                            <li class="post-btn">
+                                <button type="submit">{% translate "Post" %}</button>
+                            </li>
+                        </ul>
+                    </form>
+                    <div style="display:none;" id="hashs-list">
+                    {% for i  in last_hashtags %}
+                    <span class="hash_" name="{{i.id}}" style="cursor:pointer;color:#0d6efd" >{{i.name}}</span> , 
+
+                    {% endfor %}
+                </div>
+                    {% else %}
+                    <h3 class="news-feed-title">{% translate "Log In to create a post" %}</h3>
+                    <a style="background-color:#0d6efd;border-radius:15px;color:white;padding:10px 10px;" href="{% url 'login'%}">{% translate "Log In" %}</a>
+                    {% endif %}
+                </div>
+               
+                {% for post in posts  %}
+                    <div class="news-feed news-feed-post">
+                        <div class="post-header d-flex justify-content-between align-items-center">
+                            <div class="image">
+                                <a href="#">
+                                    {% if not post.user.profile.hide_is_online == True  %}
+                                    {% if post.user.profile.is_online == True  %}
+                                    <span style="border-radius:25px;height:10px;width:10px;background-color:#1DD217;position: absolute;" class="status-online"></span>
+                                    {% endif %}
+                                    {% endif %}
+                                    <div style="border-radius:50%;object-fit:cover;width:75px;height:75px;background-image: url('{{post.user.profile.pp}}');background-size: cover;"> </div>
+                            </div>
+                            <div class="info ms-3">
+                                {% if post.user.username == request.user.username %}
+                                <span class="name"><a href="{% url 'profile' %}">{{post.user.username}} <small>( {% translate "You" %} )</small></a></span>
+                                {% else %}     
+                                <span class="name"><a href="{% url 'user_profiles' post.user.username %}">{{post.user.username}}</a></span>
+                                {% endif %}
+                                <span class="small-text"><a href="#">{{post.date_added|date:'D d/m/Y'}}</a></span>
+                            </div>
+                            {% if post.user == request.user %}
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='bx bx-dots-horizontal-rounded' ></i></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item d-flex align-items-center" href="{% url 'post-edit' post.id %}"><i class='bx bx-edit-alt' ></i> {% translate "Edit Post" %}</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center" href="{% url 'post-delete' post.id %}"><i class='bx bx-trash-alt' ></i> {% translate "Delete Post" %}</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center" href="{% url 'post-detail' post.id %}"><i class='bx bx-detail'></i>{% translate "Detail Page" %}</a></li>
+    
+                                </ul>
+                            </div>
+                            {% else %}
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='bx bx-dots-horizontal-rounded' ></i></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item d-flex align-items-center" href="{% url 'post-detail' post.id %}"><i class='bx bx-detail'></i>{% translate "Detail Page" %}</a></li>
+                                </ul>
+                            </div>
+                            {% endif %}
+                        </div>
+    
+                        <div class="post-body">
+                            <p>{{post.content}}</p>
+                            
+                            <ul class="post-meta-wrap d-flex justify-content-between align-items-center">
+                               
+                                <li class="post-react">
+                                    <p>
+                                        {% for hash in post.hashtags.all %}
+                                        <a style="color:#0d6efd" href="{% url 'hashtag' hash.name %}">{{hash.name}}</a> , 
+                                        {% endfor %}
+                                    </p>                               
+                                </li>                           
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% if not posts %}
+                <div class="load-more-posts-btn">
+                    <a href="#"><i class='bx bxs-bowl-hot' ></i> {% translate "No post created yet" %}</a>
+                </div>
+            </div>
+            </div>
+        </div>
+       {% endif %}
+    </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
+{% block js %}
+<script>
+    $(document).ready(function(){
+        $("#hashs").click(function(){
+          $("#hashs-list").toggle(200);
+        });
+        $(".hash_").click(function(){
+            $('#id_content').val(`${$('#id_content').val()} ${$(this).text()}`);
+        });
+      });
+
+</script>
+{% endblock js %}

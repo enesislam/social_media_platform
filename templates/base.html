@@ -1,0 +1,567 @@
+{% load static %}
+{% load i18n %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <!-- Links of CSS files -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/remixicon.css' %}">
+        <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/magnific-popup.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/simplebar.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/metismenu.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+		<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+        
+		<title>{% block title %} Home {% endblock title %}</title>
+		{% block css %} {% endblock css %}
+
+        <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    </head>
+
+    <body>
+
+        <!-- Start Main Content Wrapper Area -->
+        <div class="main-content-wrapper d-flex flex-column">
+
+            <!-- Start Navbar Area -->
+            <div class="navbar-area">
+                <div class="main-responsive-nav">
+                    <div class="main-responsive-menu">
+                        <div class="responsive-burger-menu d-lg-none d-block">
+                            <span class="top-bar"></span>
+                            <span class="middle-bar"></span>
+                            <span class="bottom-bar"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-navbar">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        
+                        <a href="{% url 'home'%}" class="navbar-brand d-flex align-items-center">
+                            <img src="{% static 'images/logo.png' %}" alt="image">
+                        </a>
+                         
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <div class="navbar-burger-menu m-auto">
+                                <span class="top-bar"></span>
+                                <span class="middle-bar"></span>
+                                <span class="bottom-bar"></span>
+                            </div>
+
+                            <div class="search-box m-auto">
+                                <form>
+                                    <input type="text" class="input-search" placeholder="Search...">
+                                    <button type="submit"><i class="ri-search-line"></i></button>
+                                </form>
+                            </div>
+
+                            <div class="others-options d-flex align-items-center">
+                                <div class="option-item">
+                                    <a href="{% url 'home' %}" class="home-btn"><i class='bx bx-home-alt-2' ></i></a>
+                                </div>
+
+                                {% if request.user.is_authenticated %}
+                                <div class="option-item">
+                                    <div class="dropdown notifications-nav-item">
+                                        <a href="#" class="dropdown-bs-toggle{% if new_notifs == True %} notification_btn{% endif %}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="notifications-btn">
+                                                <i class="flaticon-bell"></i>
+                                                {% if new_notifs == False %}
+                                                {% else %}
+                                                <span id="notf_count">{{new_notifs_count}}</span>
+                                                {% endif %}
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <div class="notifications-header d-flex justify-content-between align-items-center">
+                                                <h3>Notifications</h3>
+                                                <a href="{% url 'notifications_list' %}">  <i class="flaticon-menu"></i></a>
+                                            </div>
+                                            <div class="notifications-body" data-simplebar>   
+                                                {% for notif in follow_notifications %}
+                                                <div class="item d-flex justify-content-between align-items-center">
+                                                    <div class="figure">
+                                                        <a href="#"><img src="{{notif.from_user.profile.pp}}" class="rounded-circle" alt="image"></a>
+                                                    </div>
+                                                    <div class="text">
+                                                        <h4><a href="{% url 'user_profiles' notif.from_user.profile.user.username %}">{{notif.from_user.profile.user.username}}</a></h4>
+                                                        {% if notif.notification_type == 'friend_now' %}
+                                                        <span>{% translate "You are friend now." %}</span>
+
+                                                        {% elif notif.notification_type == 'follow' %}
+                                                        <span>{% translate "Followed you." %}</span>
+                                                        {% else %}
+                                                        {% endif %}
+                                                        <span class="main-color">{{notif.date_added|date:'D d/m/Y'}}</span>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                                <div class="view-all-notifications-btn">
+                                                    <a href="{% url 'notifications_list' %}" class="default-btn">{% translate "View All Notifications" %}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="option-item">
+                                    <div class="dropdown friend-requests-nav-item">
+                                        <a href="#" class="dropdown-bs-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="friend-requests-btn friend_notification_btn">
+                                                <i class="flaticon-user"></i>
+                                                 
+                                        {% if friend_req_new_notifs_count == False %}
+                                        {% else %}
+                                        <span id="notf_count">{{friend_req_new_notifs_count}}</span>
+                                        {% endif %}
+
+                                        
+                                            </div>
+                                        </a>
+            
+                                        <div class="dropdown-menu">
+                                            <div class="friend-requests-header d-flex justify-content-between align-items-center">
+                                                <h3>Friend Requests</h3>
+                                                <a href="{% url 'notifications_list' %}"><i class="flaticon-menu"></i></a>
+                                            </div>
+
+                                            <div class="friend-requests-body" data-simplebar>
+                                                
+
+                                                {% for notif in friend_req_notifications %}
+                                                <div class="item d-flex align-items-center" id="proile">
+                                                    <div class="figure">
+                                                        <a href="{% url 'user_profiles' notif.from_user.username  %}"><img src="{{notif.from_user.profile.pp}}" class="rounded-circle" alt="image"></a>
+                                                    </div>
+
+                                                    <div class="content d-flex justify-content-between align-items-center">
+                                                        <div class="text">
+                                                            <h4><a href="{% url 'user_profiles' notif.from_user.username %}">{{notif.from_user}}</a></h4>
+                                                            <span>{{notif.from_user.profile.total_friends}} Friends</span>
+                                                        </div>
+                                                        <div class="btn-box d-flex align-items-center">
+                                                            <button class="delete-btn d-inline-block me-2 delete_friend_request" name="{{notif.from_user.username}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
+                            
+                                                            <button class="confirm-btn d-inline-block accept_friend_request"  name="{{notif.from_user.username}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                                
+                                                <div class="view-all-requests-btn">
+                                                    <a href="{% url 'notifications_list' %}" class="default-btn">View All Requests</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                {% endif %}
+                                <form action="{% url 'set_language' %}" method="post">
+                                    {% csrf_token %}
+                                    {% if 'hashtag' in request.path %}
+                                    <input name="next" type="hidden" value="/" />
+
+                                    {% else %}
+                                    <input name="next" type="hidden" value="{{request.path}}" />
+
+                                    {% endif %}
+                            
+                                    <select class="selectpicker" name="language" style="width: auto;" onchange="this.form.submit()">
+                                      {% get_current_language as LANGUAGE_CODE %}
+                                      {% get_available_languages as LANGUAGES %}
+                                      {% get_language_info_list for LANGUAGES as languages %}
+                                      {% for language in languages %}
+                            
+                                          <option
+                                            value="{{ language.code }}"
+                                            {% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}
+                                            data-content='<img src="{% static 'images/flags/{{ language.code }}.gif' %}"></span>
+                                            <span style="display:inline-block; width:100px; padding-left: 10px; text-shadow:none">
+                                              {{ language.name_local }}
+                                              <!-- span style="color:#999;">&nbsp;[{{ language.code }}]</span -->
+                                            </span>'>
+                                            {{ language.code }}
+                                          </option>
+                            
+                                      {% endfor %}
+                                    </select>
+                                </form>
+                                
+                                 
+                                <div class="option-item">
+                                    <div class="dropdown profile-nav-item">
+                                        <a href="#"  style="position:realtive;top:-8x; margin-left:6px;"  class="dropdown-bs-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="menu-profile">
+                             
+                                
+                                                
+                                                {% if request.user.is_authenticated %}
+                                                <img src="{{request.user.profile.pp}}" class="rounded-circle" alt="image">
+                                                <span class="name">{{request.user.username}}</span>
+                                                {% if not request.user.profile.hide_is_online == True  %}
+                                                    <span class="status-online"></span>
+                                                    {% endif %}
+                                                {% endif %}
+
+                                            </div>
+                                        </a>
+            
+                                        <div class="dropdown-menu">
+                                            <div class="profile-header">
+                                                {% if request.user.is_authenticated %}
+                                                <h3>{{request.user.username}}</h3>
+                                                {% endif %}
+                                                {% if request.user.profile.mail %}
+                                                <a href="#">{{request.user.profile.mail}}</a>
+                                                {% endif %}
+                                             </div>
+                                            <ul class="profile-body">
+                                                {% if request.user.is_authenticated %}
+                                                <li><i class='bx bx-user' ></i> <a href="{% url 'profile' %}">{% translate "My Profile" %}</a></li>
+                                                <li> <i class='bx bx-cog' ></i> <a href="{% url 'settings' %}">{% translate "Setting" %}</a></li>
+                                                <li><i class='bx bx-log-out' ></i> <a href="{% url 'logout' %}">{% translate "Logout" %}</a></li>
+                                                {% else %}
+                                                <li><i class='bx bx-log-in'></i> <a href="{% url 'register' %}">{% translate "Register" %}</a></li>
+                                                <li><i class='bx bx-log-in'></i> <a href="{% url 'login' %}">{% translate "Login" %}</a></li>
+                                                {% endif %}
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="others-option-for-responsive">
+                    <div class="container">
+                        <div class="dot-menu">
+                            <div class="inner">
+                                <div class="circle circle-one"></div>
+                                <div class="circle circle-two"></div>
+                                <div class="circle circle-three"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="container">
+                            <div class="option-inner">
+                                <div class="others-options d-flex align-items-center">
+                                    <div class="option-item">
+                                        <a href="{% url 'home' %}" class="home-btn"><i class='bx bx-home-alt-2'></i></a>
+                                    </div>
+                                    
+                                    
+                                    <form action="{% url 'set_language' %}" method="post">
+                                        {% csrf_token %}
+                                
+                                        <input type="hidden" name="next" value='{{request.path}}'>
+                                        <select class="selectpicker" name="language" style="width: auto;" onchange="this.form.submit()">
+                                          {% get_current_language as LANGUAGE_CODE %}
+                                          {% get_available_languages as LANGUAGES %}
+                                          {% get_language_info_list for LANGUAGES as languages %}
+                                          {% for language in languages %}
+                                
+                                              <option
+                                                value="{{ language.code }}"
+                                                {% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}
+                                                data-content='<img src="/static/images/flags/{{ language.code }}.gif"></span>
+                                                <span style="display:inline-block; width:100px; padding-left: 10px; text-shadow:none">
+                                                  {{ language.name_local }}
+                                                  <!-- span style="color:#999;">&nbsp;[{{ language.code }}]</span -->
+                                                </span>'>
+                                                {{ language.code }}
+                                              </option>
+                                
+                                          {% endfor %}
+                                        </select>
+                                    </form>
+                                    <div class="option-item">
+                                        <div class="dropdown profile-nav-item">
+                                            <a href="#" style="position:realtive;" class="dropdown-bs-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                {% if request.user.is_authenticated %}
+                                                <div class="menu-profile">
+                                                    <img src="{{request.user.profile.pp}}" class="rounded-circle" alt="image">
+                                                    <span class="name">{{request.user.username}}</span>
+                                                    {% if not request.user.profile.hide_is_online == True  %}
+                                                    <span class="status-online"></span>
+                                                    {% endif %}
+
+                                                </div>
+                                                {% else %}
+                                                {% endif %}
+                                                
+                                            </a>
+                
+                                            <div class="dropdown-menu">
+                                                <div class="profile-header">
+                                                    {% if request.user.is_authenticated %}
+                                                        <h3>{{request.user.username}}</h3>
+                                                        {% if request.user.profile.mail %}
+                                                        <a href="#">{{request.user.profile.mail}}</a>
+                                                        {% endif %}
+                                                        {% else %}
+
+                                                    {% endif %}
+                                                    
+                                                </div>
+                                                {% if request.user.is_authenticated %}
+
+                                                <ul class="profile-body">
+                                                    <li><i class='bx bx-user' ></i> <a href="{% url 'profile' %}">{% translate "My Profile" %}</a></li>
+                                                    <li> <i class='bx bx-cog' ></i> <a href="{% url 'settings' %}">{% translate "Setting" %}</a></li>
+                                                    <li><i class='bx bx-log-out' ></i> <a href="{% url 'logout' %}">{% translate "Logout" %}</a></li>
+                                                </ul>
+                                                {% else %}
+                                                
+                                                <ul class="profile-body">
+                                                    <li><i class='bx bx-log-in'></i> <a href="{% url 'register' %}">{% translate "Register" %}</a></li>
+                                                    <li><i class='bx bx-log-in'></i> <a href="{% url 'login' %}">{% translate "Login" %}</a></li>
+                                                </ul>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="option-item">
+                                        <div class="search-box">
+                                            <form action="{% url 'search_results' %}" method="GET">
+                                                <input type="text" name="q" class="input-search" placeholder="{% translate 'Search' %}... ">
+                                                <button type="submit"><i class="ri-search-line"></i></button>
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>       
+            </div>
+            <!-- End Navbar Area -->
+            
+            <!-- Start Sidemenu Area -->
+            <div class="sidemenu-area">
+                <div class="responsive-burger-menu d-lg-none d-block">
+                    <span class="top-bar"></span>
+                    <span class="middle-bar"></span>
+                    <span class="bottom-bar"></span>
+                </div>
+
+                <div class="sidemenu-body">
+                    <ul class="sidemenu-nav metisMenu h-100" id="sidemenu-nav" data-simplebar>
+                        <li class="nav-item active">
+                            <a href="{% url 'home' %}" class="nav-link">
+                                <span class="icon"><i class='bx bx-home-alt-2'></i></span>
+                                <span class="menu-title">{% translate "Home" %}</span>
+                            </a>
+                        </li>
+                    
+                        {% if request.user.is_authenticated %}
+                        
+                        
+                        <li class="nav-item">
+                            <a href="{% url 'profile' %}" class="nav-link">
+                                <span class="icon"><i class='bx bx-user' ></i></span>
+                                <span class="menu-title">{% translate "Profile" %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'friends_list' %}" class="nav-link">
+                                <span class="icon"> <i class='bx bx-group'></i></span>
+                                <span class="menu-title">{% translate "Friends" %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'followings' %}" class="nav-link">
+                                <span class="icon"><i class='bx bxs-face' ></i></span>
+                                <span class="menu-title">{% translate "Followings" %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'notifications_list' %}" class="nav-link">
+                                <span class="icon"><i class='bx bx-bell'></i></span>
+                                <span class="menu-title">{% translate "Notifications" %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'settings' %}" class="nav-link">
+                                <span class="icon"><i class='bx bx-cog' ></i></span>
+                                <span class="menu-title">{% translate "Settings" %}</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="{% url 'logout' %}" class="nav-link">
+                                <span class="icon"><i class='bx bx-log-out'></i></span>
+                                <span class="menu-title">{% translate "Logout" %}</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'register' %}" class="nav-link">
+                                <span class="icon"><i class='bx bxs-log-in' ></i></span>
+                                <span class="menu-title">{% translate "Register" %}</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'login' %}" class="nav-link">
+                                <span class="icon"><i class='bx bx-log-in' ></i></span>
+                                <span class="menu-title">{% translate "Login" %}</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        
+                       
+                    </ul>
+                </div>
+            </div>
+            <!-- End Sidemenu Area -->
+            
+            {% block content %}
+            {% endblock content %}
+            <!-- End Content Page Box Area -->
+        </div>
+        <!-- End Main Content Wrapper Area -->
+        
+        <!-- Start Copyright Area -->
+        <div class="copyrights-area">
+            <div class="container">
+                <div class="row align-items-center">
+                   
+                                  
+            </div>
+            </div>
+        </div>
+        <!-- End Copyright Area -->
+
+        <!-- Start Go Top Area -->
+        <div class="go-top">
+            <i class='bx bx-chevrons-up' ></i>
+        </div>
+        <!-- End Go Top Area -->
+        {% block js %}
+        
+        {% endblock js %}
+        <!-- Links of JS files -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}" ></script>
+        <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'js/simplebar.min.js' %}"></script>
+        <script src="{% static 'js/metismenu.min.js' %} "></script>
+        <script src="{% static 'js/owl.carousel.min.js' %} "></script>
+        <script src="{% static 'js/wow.min.js' %} "></script>
+        <script src="{% static 'js/main.js' %} "></script>
+        <script>
+            $('.notification_btn').click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'read_the_notifications' %}",
+                    data: {'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                    dataType: "json",
+                    success: function(response) {
+                         if(response.there_are_notifications==true){
+                         $( "#notf_count" ).hide();
+                         console.log(response.info)
+                         }
+                         else if(response.there_are_notifications==false){
+                           console.log(response.info)
+                         }
+                     },
+                     error: function(rs, e) {
+                      console.log('error')
+                     }
+               }); 
+            });
+        </script>
+        <script>
+            $('.friend_notification_btn').click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'read_the_friend_notifications' %}",
+                    data: {'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                    dataType: "json",
+                    success: function(response) {
+                         if(response.there_are_friend_notifications==true){
+                         $( "#notf_count" ).hide();
+                         console.log(response.info)
+                         }
+                         else if(response.there_are_friend_notifications==false){
+                           console.log(response.info)
+                         }
+                     },
+                     error: function(rs, e) {
+                      console.log('error')
+                     }
+               }); 
+            });
+        </script>
+        <script>
+            $('.accept_friend_request').click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'accept_friend_request' %}",
+                    data: {'username':$(this).attr('name') ,'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                    dataType: "json",
+                    success: function(response) {
+                        location.reload();
+
+                         if(response.accepted==true){
+                         $( "#proile" ).hide();
+                         console.log(response.info)
+
+
+                         }
+                         else if(response.accepted==false){
+                           console.log(response.info)
+                         }
+                     },
+                     error: function(rs, e) {
+                      console.log('error')
+                     }
+               }); 
+            });
+        </script>
+        <script>
+            $('.delete_friend_request').click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'delete_friend_request' %}",
+                    data: {'username':$(this).attr('name')  ,'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                    dataType: "json",
+                    success: function(response) {
+                        location.reload();
+                        
+                         if(response.status==true){
+                            $( "#proile" ).hide();
+                            console.log(response.status)
+
+                         }
+                         else if(response.status==false){
+                           console.log(response.status)
+                         }
+                     },
+                     error: function(rs, e) {
+                      console.log('error')
+                     }
+               }); 
+            });
+        </script>
+    </body>
+</html>

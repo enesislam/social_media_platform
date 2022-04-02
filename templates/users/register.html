@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}Sign Up{% endblock title %}
+{% block content %}
+<div class="preloader-area">
+            <div class="spinner">
+                <div class="inner">
+                    <div class="disc"></div>
+                    <div class="disc"></div>
+                    <div class="disc"></div>
+                </div>
+            </div>
+        </div>
+        <!-- End Preloader Area -->
+        
+        <!-- Start Preloader Area -->
+        <div class="profile-authentication-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">               
+                            <div class="profile-authentication-image">
+                                <div class="content-image">
+                                    <div class="logo">
+                                        <h5 style="color:white;">{% translate 'Have an account?'%}</h5>
+                                <a style="background-color:#0d6efd;border-radius:15px;color:white;padding:10px 10px;" href="{% url 'login'%}">{% translate 'Login' %}</a>
+                                
+                                    </div>
+                                    <div class="vector-image">
+                                        <img src="{% static 'images/vector.png' %} " alt="image">
+                                    </div>
+                                </div>
+                            </div>
+                        <
+                    </div>
+    
+                    <div class="col-lg-6 col-md-12">
+                        <div class="register-form" style="text-align:center;">
+                            <h2>{% translate "Register" %}</h2>
+                            <form method="POST">
+                                {% csrf_token %}
+
+                                {{form.as_ul}}
+                                <button type="submit" class="default-btn">{% translate 'Register'%}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock content %}

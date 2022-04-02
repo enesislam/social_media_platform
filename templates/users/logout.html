@@ -1,0 +1,25 @@
+
+    {% extends 'base.html' %}
+    {% load static %}
+    {% load i18n %}
+    {% block content %}
+       <!-- Start Preloader Area -->
+    <div class="profile-authentication-area">
+        <div class="container">
+            <div class="col-lg-6 col-md-12">
+                <div class="login-form">
+                    <h2>{% translate 'You logged out'%}</h2>
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            <a style="background-color:#0d6efd;border-radius:15px;color:white;padding:15px 15px;" href="{% url 'login'%}">{% translate 'Login'%}<i class='bx bx-log-in' ></i></a>
+                            <a style="background-color:#0d6efd;border-radius:15px;color:white;padding:15px 15px;" href="{% url 'home'%}">{% translate 'Home'%} <i class='bx bx-home-alt-2'></i></a>
+                        </small>
+                    </div>
+                </div>  
+            </div>   
+        </div>  
+    </div>  
+    <!-- End Preloader Area -->
+    
+    {% endblock content %}
+         

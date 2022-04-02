@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+		
+        
+            <!-- Start Content Page Box Area -->
+            <div class="content-page-box-area">
+                <div class="page-banner-box bg-4">
+                    <h3>{% translate "Followings List" %}</h3>
+                </div>
+
+                <div class="friends-inner-box-style d-flex justify-content-between align-items-center margin-top-25">
+                    
+                      <h5>{% translate "You are following" %} {{request.user.user_following.count}} {% translate "profile" %}</h5>
+                    
+                </div>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="friend-requests" role="tabpanel">
+                        <div class="row justify-content-center">
+
+                            {% for user in  list %}
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="single-friends-card">
+                                    <div class="friends-image">
+                                        <a href="#">
+                                            <img src="{% static 'images/my-profile-bg.jpg' %}" alt="image">
+                                        </a>
+                                        <div class="icon">
+                                            <a href="{% url 'user_profiles' user.to_user.username %}"><i class="flaticon-user"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="friends-content">
+                                        <div class="friends-info d-flex justify-content-between align-items-center">
+                                            <a href="#">
+                                                <div style="border-radius:50%;height:100px;width:100px;">
+                                                        <img style="border-radius:50%" width="100px" height="100px" src="{{user.to_user.profile.image.url}}" alt="">
+                                                </div>
+
+                                            </a>
+                                            <div class="text ms-3">
+                                                <h3><a href="{% url 'user_profiles' user.to_user.username %}">{{ user.to_user.username}}</a></h3>
+                                                <span>{{user.bio}}</span>
+                                            </div>
+                                        </div>
+                                        <ul class="statistics">
+                                            <li>
+                                                <a href="#">
+                                                    <span class="item-number">{{user.to_user.posts.count}}</span> 
+                                                    <span class="item-text">Posts</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="item-number">{{user.to_user.user_following.count}}</span> 
+                                                    <span class="item-text">Following</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="item-number">{{user.to_user.following_user.count}}</span> 
+                                                    <span class="item-text">Followers</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="button-group d-flex justify-content-between align-items-center">
+                                            <div class="add-friend-btn">
+                                                <a  href="{% url 'user_profiles' user.to_user.username %}"><button class="btnn" id="follow" >{% translate "Go Profile" %}</button></a>
+                                            </div>
+                                            <div class="send-message-btn">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Content Page Box Area -->
+
+            {% endblock content %}

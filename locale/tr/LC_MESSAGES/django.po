@@ -1,0 +1,861 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-02 09:54+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\core\forms.py:10
+msgid "Write something here..."
+msgstr "Gönderi içeriğini buraya yazın..."
+
+#: .\core\models.py:12
+msgid "Name"
+msgstr "İsim"
+
+#: .\core\models.py:13
+msgid "Date added"
+msgstr "Tarih"
+
+#: .\core\models.py:22
+msgid "User of Post"
+msgstr "Post sahibi"
+
+#: .\core\models.py:23 .\core\models.py:76 .\core\models.py:85
+#: .\core\models.py:96 .\core\models.py:109
+msgid "Date Added"
+msgstr "Tarih"
+
+#: .\core\models.py:24 .\templates\home.html:30
+#: .\templates\users\profile.html:79 .\templates\users\user_profile.html:95
+msgid "Hashtags"
+msgstr "Hashtagler"
+
+#: .\core\views.py:29
+msgid "Post created successfully"
+msgstr "Gönderi oluşturuldu"
+
+#: .\core\views.py:54
+msgid "Post deleted successfully"
+msgstr "Gönderi silindi"
+
+#: .\core\views.py:95
+msgid "Mail is deleted successfully"
+msgstr "E-posta başarı ile eklendi"
+
+#: .\core\views.py:104
+msgid "Mail is updated successfully"
+msgstr "E-posta başarı ile eklendi"
+
+#: .\core\views.py:114
+msgid "Profile picture is updated successfully"
+msgstr "Gönderi oluşturuldu"
+
+#: .\core\views.py:194 .\core\views.py:233
+msgid "Notifications are read"
+msgstr "Bildirimler okundu"
+
+#: .\core\views.py:197 .\core\views.py:236
+msgid "No notifications"
+msgstr "Bildirim yok"
+
+#: .\core\views.py:221
+msgid "All notifications are deleted"
+msgstr "Tüm bildirimler silindi"
+
+#: .\core\views.py:374
+msgid "Your profile is now private"
+msgstr "Profil gizli olarak ayarlandı"
+
+#: .\core\views.py:379 .\core\views.py:390 .\core\views.py:401
+msgid "Your profile is now public"
+msgstr "Profilin şimdi genel bir şekilde ayarlandı"
+
+#: .\core\views.py:385
+msgid "You are a ghost now"
+msgstr "Artık bir hayaletsin"
+
+#: .\core\views.py:396
+msgid "Your profile is now restricted to friends"
+msgstr "Profilin artık sadece arkadaşlara açık"
+
+#: .\main\settings.py:133
+msgid "English"
+msgstr "İngilizce"
+
+#: .\main\settings.py:134
+msgid "Türkçe"
+msgstr "Turkish"
+
+#: .\templates\account\account_inactive.html:5
+#: .\templates\account\account_inactive.html:8
+msgid "Account Inactive"
+msgstr "Hesap etkin değil"
+
+#: .\templates\account\account_inactive.html:10
+msgid "This account is inactive."
+msgstr "Bu hesap etkin değil."
+
+#: .\templates\account\email.html:5 .\templates\account\email.html:8
+msgid "E-mail Addresses"
+msgstr "E-posta"
+
+#: .\templates\account\email.html:10
+msgid "The following e-mail addresses are associated with your account:"
+msgstr "Bu email adresi hesabınıza bağlı:"
+
+#: .\templates\account\email.html:24
+msgid "Verified"
+msgstr "Doğrulandı"
+
+#: .\templates\account\email.html:26
+msgid "Unverified"
+msgstr "Doğrulanmadı"
+
+#: .\templates\account\email.html:28
+msgid "Primary"
+msgstr "Özel"
+
+#: .\templates\account\email.html:34
+msgid "Make Primary"
+msgstr "Özel Yap"
+
+#: .\templates\account\email.html:35
+msgid "Re-send Verification"
+msgstr "Tekrar Doğrulama Gönder"
+
+#: .\templates\account\email.html:36
+#: .\templates\socialaccount\connections.html:35
+msgid "Remove"
+msgstr "Kaldır"
+
+#: .\templates\account\email.html:43
+msgid "Warning:"
+msgstr "Uyarı"
+
+#: .\templates\account\email.html:43
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr "Henüz bir e posta adresin yok."
+
+#: .\templates\account\email.html:48
+msgid "Add E-mail Address"
+msgstr "E-Posta ekle"
+
+#: .\templates\account\email.html:53
+msgid "Add E-mail"
+msgstr "E-Posta ekle"
+
+#: .\templates\account\email.html:63
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr "Bu mail adresini kaldırmak istediğinizden emin misiniz?"
+
+#: .\templates\account\email\base_message.txt:1
+#, python-format
+msgid "Hello from %(site_name)s!"
+msgstr "%(site_name)s de merhabalar"
+
+#: .\templates\account\email\base_message.txt:5
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: .\templates\account\email\email_confirmation_message.txt:5
+#, python-format
+msgid ""
+"You're receiving this e-mail because user %(user_display)s has given your e-"
+"mail address to register an account on %(site_domain)s.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s"
+msgstr ""
+
+#: .\templates\account\email\email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr ""
+
+#: .\templates\account\email\password_reset_key_message.txt:4
+msgid ""
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+
+#: .\templates\account\email\password_reset_key_message.txt:9
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr ""
+
+#: .\templates\account\email\password_reset_key_subject.txt:3
+#: .\templates\account\email\unknown_account_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr ""
+
+#: .\templates\account\email\unknown_account_message.txt:4
+#, python-format
+msgid ""
+"You are receiving this e-mail because you or someone else has requested a\n"
+"password for your user account. However, we do not have any record of a "
+"user\n"
+"with email %(email)s in our database.\n"
+"\n"
+"This mail can be safely ignored if you did not request a password reset.\n"
+"\n"
+"If it was you, you can sign up for an account using the link below."
+msgstr ""
+
+#: .\templates\account\email_confirm.html:6
+#: .\templates\account\email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: .\templates\account\email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: .\templates\account\email_confirm.html:20
+msgid "Confirm"
+msgstr ""
+
+#: .\templates\account\email_confirm.html:27
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: .\templates\account\login.html:6 .\templates\account\login.html:10
+#: .\templates\account\login.html:43
+msgid "Sign In"
+msgstr ""
+
+#: .\templates\account\login.html:15
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
+"up</a>\n"
+"for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: .\templates\account\login.html:25
+msgid "or"
+msgstr "Veya"
+
+#: .\templates\account\login.html:32
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"<a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+"Eğer hennüz bir hesap oluşturmadıysanız, lütfen \n"
+"<a href=\"%(signup_url)s\">hesap oluşturun</a>."
+
+#: .\templates\account\login.html:42
+#: .\templates\account\password_change.html:14
+#, fuzzy
+#| msgid "Forgot password "
+msgid "Forgot Password?"
+msgstr "Şifremi unuttum"
+
+#: .\templates\account\logout.html:5 .\templates\account\logout.html:8
+#: .\templates\account\logout.html:17
+msgid "Sign Out"
+msgstr "Çıkış Yap"
+
+#: .\templates\account\logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr "Çıkış yapmak istediğinizden emin misiniz?"
+
+#: .\templates\account\messages\cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr ""
+
+#: .\templates\account\messages\email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: .\templates\account\messages\email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: .\templates\account\messages\email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: .\templates\account\messages\logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr "Başarıyla %(name)s olarak giriş yaptınız."
+
+#: .\templates\account\messages\logged_out.txt:2
+#, fuzzy
+#| msgid "You logged out"
+msgid "You have signed out."
+msgstr "Çıkış yaptınız"
+
+#: .\templates\account\messages\password_changed.txt:2
+#, fuzzy
+#| msgid "Post created successfully"
+msgid "Password successfully changed."
+msgstr "Gönderi oluşturuldu"
+
+#: .\templates\account\messages\password_set.txt:2
+#, fuzzy
+#| msgid "Post created successfully"
+msgid "Password successfully set."
+msgstr "Gönderi oluşturuldu"
+
+#: .\templates\account\messages\primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr ""
+
+#: .\templates\account\messages\unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr ""
+
+#: .\templates\account\password_change.html:5
+#: .\templates\account\password_change.html:8
+#: .\templates\account\password_change.html:13
+#: .\templates\account\password_reset_from_key.html:4
+#: .\templates\account\password_reset_from_key.html:7
+#: .\templates\account\password_reset_from_key_done.html:4
+#: .\templates\account\password_reset_from_key_done.html:7
+#, fuzzy
+#| msgid "Password"
+msgid "Change Password"
+msgstr "Şifre"
+
+#: .\templates\account\password_reset.html:6
+#: .\templates\account\password_reset.html:10
+#: .\templates\account\password_reset_done.html:6
+#: .\templates\account\password_reset_done.html:9
+#, fuzzy
+#| msgid "Password"
+msgid "Password Reset"
+msgstr "Şifre"
+
+#: .\templates\account\password_reset.html:15
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: .\templates\account\password_reset.html:20
+#, fuzzy
+#| msgid "Password"
+msgid "Reset My Password"
+msgstr "Şifre"
+
+#: .\templates\account\password_reset.html:23
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: .\templates\account\password_reset_done.html:15
+msgid ""
+"We have sent you an e-mail. If you have not received it please check your "
+"spam folder. Otherwise contact us if you do not receive it in a few minutes."
+msgstr ""
+
+#: .\templates\account\password_reset_from_key.html:7
+msgid "Bad Token"
+msgstr ""
+
+#: .\templates\account\password_reset_from_key.html:11
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: .\templates\account\password_reset_from_key.html:16
+#, fuzzy
+#| msgid "Forgot password "
+msgid "change password"
+msgstr "Şifremi unuttum"
+
+#: .\templates\account\password_reset_from_key_done.html:8
+msgid "Your password is now changed."
+msgstr ""
+
+#: .\templates\account\password_set.html:5
+#: .\templates\account\password_set.html:8
+#: .\templates\account\password_set.html:13
+#, fuzzy
+#| msgid "Password"
+msgid "Set Password"
+msgstr "Şifre"
+
+#: .\templates\account\signup.html:5 .\templates\socialaccount\signup.html:5
+msgid "Signup"
+msgstr "Hesap Oluştur"
+
+#: .\templates\account\signup.html:8 .\templates\account\signup.html:18
+#: .\templates\socialaccount\signup.html:8
+#: .\templates\socialaccount\signup.html:19
+msgid "Sign Up"
+msgstr "Hesap Oluştur"
+
+#: .\templates\account\signup.html:10
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr "Zaten hesabınız var mı? Eğer varsa lütfen <a href=\"%(login_url)s\">"
+
+#: .\templates\account\signup_closed.html:5
+#: .\templates\account\signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: .\templates\account\signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: .\templates\account\snippets\already_logged_in.html:5
+msgid "Note"
+msgstr ""
+
+#: .\templates\account\snippets\already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
+
+#: .\templates\account\verification_sent.html:5
+#: .\templates\account\verification_sent.html:8
+#: .\templates\account\verified_email_required.html:5
+#: .\templates\account\verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: .\templates\account\verification_sent.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. If you do not see the verification e-mail in "
+"your main inbox, check your spam folder. Please contact us if you do not "
+"receive the verification e-mail within a few minutes."
+msgstr ""
+
+#: .\templates\account\verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: .\templates\account\verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside that e-mail. If you do not see "
+"the verification e-mail in your main inbox, check your spam folder. "
+"Otherwise\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: .\templates\account\verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: .\templates\base.html:103 .\templates\notifications.html:33
+msgid "You are friend now."
+msgstr "Artık arkadaşsınız"
+
+#: .\templates\base.html:106
+msgid "Followed you."
+msgstr "Seni takip etti"
+
+#: .\templates\base.html:114
+msgid "View All Notifications"
+msgstr "Tüm Bildirimleri gör"
+
+#: .\templates\base.html:234 .\templates\base.html:325
+#: .\templates\users\profile.html:4
+msgid "My Profile"
+msgstr "Profilim"
+
+#: .\templates\base.html:235 .\templates\base.html:326
+msgid "Setting"
+msgstr "Ayarlar"
+
+#: .\templates\base.html:236 .\templates\base.html:327
+#: .\templates\base.html:412
+msgid "Logout"
+msgstr "Çıkış Yap"
+
+#: .\templates\base.html:238 .\templates\base.html:332
+#: .\templates\base.html:419 .\templates\users\register.html:44
+msgid "Register"
+msgstr "Kayıt Ol"
+
+#: .\templates\base.html:239 .\templates\base.html:333
+#: .\templates\base.html:426 .\templates\users\login.html:59
+#: .\templates\users\login.html:79 .\templates\users\logout.html:14
+#: .\templates\users\register.html:26
+msgid "Login"
+msgstr "Giriş Yap"
+
+#: .\templates\base.html:344
+msgid "Search"
+msgstr "Aradığınız kelimeyi giriniz"
+
+#: .\templates\base.html:371 .\templates\home.html:4
+#: .\templates\users\logout.html:15
+msgid "Home"
+msgstr "Anasayfa"
+
+#: .\templates\base.html:381
+msgid "Profile"
+msgstr "Profilim"
+
+#: .\templates\base.html:387 .\templates\users\friends.html:4
+#: .\templates\users\friends.html:11 .\templates\users\friends.html:16
+msgid "Friends"
+msgstr "Arkadaşlar"
+
+#: .\templates\base.html:393
+msgid "Followings"
+msgstr "Takip edilenler"
+
+#: .\templates\base.html:399 .\templates\notifications.html:5
+#: .\templates\notifications.html:14
+msgid "Notifications"
+msgstr "Bildirimler"
+
+#: .\templates\base.html:405 .\templates\users\settings.html:3
+#: .\templates\users\settings.html:62
+#, fuzzy
+#| msgid "Setting"
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: .\templates\hashtag.html:4 .\templates\hashtag.html:22
+#: .\templates\search_results.html:15
+msgid "Postswith"
+msgstr "Gönderiler"
+
+#: .\templates\hashtag.html:47 .\templates\hashtag.html:112
+msgid " Edit Post"
+msgstr "Gönderiyi düzenle"
+
+#: .\templates\hashtag.html:48 .\templates\hashtag.html:113
+#: .\templates\home.html:115 .\templates\post-detail.html:51
+#: .\templates\users\profile.html:126 .\templates\users\user_profile.html:142
+#: .\templates\users\user_profile.html:192
+msgid "Delete Post"
+msgstr "Gönderiyi Sil"
+
+#: .\templates\hashtag.html:74
+msgid "There is no hashtag with this word."
+msgstr "Bu kelime ile hashtag yok"
+
+#: .\templates\hashtag.html:85
+msgid "Here is another post related with"
+msgstr "Bu hashtag ile alakalı olabilecek başka bir gönderi"
+
+#: .\templates\hashtag.html:88
+#, fuzzy
+#| msgid "No post created yet"
+msgid "Here is some posts related with"
+msgstr "Henüz bir gönderi oluşturulmadı."
+
+#: .\templates\home.html:24 .\templates\users\profile.html:73
+#: .\templates\users\user_profile.html:89
+msgid "Posts"
+msgstr "Gönderiler"
+
+#: .\templates\home.html:35 .\templates\post_update.html:32
+msgid "View Profile"
+msgstr "Profilim"
+
+#: .\templates\home.html:40 .\templates\post-detail.html:13
+#: .\templates\post_update.html:40
+msgid "Advertisement"
+msgstr "Reklam"
+
+#: .\templates\home.html:58
+msgid "Create new Post "
+msgstr "Yeni Gönderi Oluştur"
+
+#: .\templates\home.html:69
+msgid "Select Hashtags"
+msgstr "Hashtag Seç"
+
+#: .\templates\home.html:74 .\templates\post_update.html:71
+msgid "Post"
+msgstr "Gönder"
+
+#: .\templates\home.html:85
+msgid "Log In to create a post"
+msgstr "Gönderi oluşturmak için Giriş Yap"
+
+#: .\templates\home.html:86
+msgid "Log In"
+msgstr "Giriş Yap"
+
+#: .\templates\home.html:104
+msgid "You"
+msgstr "Siz"
+
+#: .\templates\home.html:114 .\templates\post-detail.html:50
+#: .\templates\users\profile.html:125 .\templates\users\user_profile.html:141
+#: .\templates\users\user_profile.html:191
+msgid "Edit Post"
+msgstr "Gönderiyi düzenle"
+
+#: .\templates\home.html:116 .\templates\home.html:124
+#: .\templates\users\profile.html:123 .\templates\users\user_profile.html:144
+#: .\templates\users\user_profile.html:194
+msgid "Detail Page"
+msgstr "Gönderiye git"
+
+#: .\templates\home.html:148
+msgid "No post created yet"
+msgstr "Henüz bir gönderi oluşturulmadı."
+
+#: .\templates\notifications.html:36
+msgid "Sent you friend request."
+msgstr "Sana arkadaşlık isteği gönderdi"
+
+#: .\templates\notifications.html:39
+msgid "Followed You."
+msgstr "Seni takip etti"
+
+#: .\templates\notifications.html:51
+msgid "No Notification"
+msgstr "Bildirim yok"
+
+#: .\templates\post-detail.html:76
+msgid "This post is not available anymore"
+msgstr "Bu gönderi artık mevcut değil"
+
+#: .\templates\post_update.html:4 .\templates\post_update.html:59
+#, fuzzy
+#| msgid "Edit Post"
+msgid "Update Post"
+msgstr "Gönderiyi düzenle"
+
+#: .\templates\search_results.html:4
+#, fuzzy
+#| msgid "Search"
+msgid "Search for"
+msgstr "Aradığınız kelimeyi giriniz"
+
+#: .\templates\search_results.html:23
+#, fuzzy
+#| msgid "There is no hashtag with this word."
+msgid "There is no result with this word."
+msgstr "Bu kelime ile hashtag yok"
+
+#: .\templates\socialaccount\authentication_error.html:5
+#: .\templates\socialaccount\authentication_error.html:8
+msgid "Social Network Login Failure"
+msgstr ""
+
+#: .\templates\socialaccount\authentication_error.html:10
+msgid ""
+"An error occurred while attempting to login via your social network account."
+msgstr ""
+
+#: .\templates\socialaccount\connections.html:5
+#: .\templates\socialaccount\connections.html:8
+msgid "Account Connections"
+msgstr ""
+
+#: .\templates\socialaccount\connections.html:11
+msgid ""
+"You can sign in to your account using any of the following third party "
+"accounts:"
+msgstr ""
+
+#: .\templates\socialaccount\connections.html:43
+msgid ""
+"You currently have no social network accounts connected to this account."
+msgstr ""
+
+#: .\templates\socialaccount\connections.html:46
+msgid "Add a 3rd Party Account"
+msgstr "Sosyal medya hesabı ile giriş yap"
+
+#: .\templates\socialaccount\login.html:44
+#, python-format
+msgid "Connect %(provider)s"
+msgstr "%(provider)s ile Bağlan "
+
+#: .\templates\socialaccount\login.html:46
+#, python-format
+msgid "You are about to connect a new third party account from %(provider)s."
+msgstr ""
+"Sosyal medya hesabınızı bağlamak için %(provider)s'a giriş yapıyorsunuz."
+
+#: .\templates\socialaccount\login.html:48
+#, python-format
+msgid "Contunie with %(provider)s"
+msgstr "%(provider)s ile devam et"
+
+#: .\templates\socialaccount\login.html:50
+#, python-format
+msgid "You are about to sign in using an account from %(provider)s."
+msgstr "Şuanda %(provider)s hesabınızla giriş yapıyorsunuz."
+
+#: .\templates\socialaccount\login.html:58 .\templates\users\login.html:102
+#: .\templates\users\login.html:115
+msgid "Continue with"
+msgstr "Şununla devam et"
+
+#: .\templates\socialaccount\login_cancelled.html:5
+#: .\templates\socialaccount\login_cancelled.html:9
+msgid "Login Cancelled"
+msgstr "Giriş iptal edildi"
+
+#: .\templates\socialaccount\login_cancelled.html:13
+#, python-format
+msgid ""
+"You decided to cancel logging in to our site using one of your existing "
+"accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+
+#: .\templates\socialaccount\messages\account_connected.txt:2
+msgid "The social account has been connected."
+msgstr "Hesap bağlandı."
+
+#: .\templates\socialaccount\messages\account_connected_other.txt:2
+msgid "The social account is already connected to a different account."
+msgstr "Bu hesap zaten başka bir hesaba bağlı."
+
+#: .\templates\socialaccount\messages\account_disconnected.txt:2
+msgid "The social account has been disconnected."
+msgstr ""
+
+#: .\templates\socialaccount\signup.html:10
+#, python-format
+msgid ""
+"You are about to use your %(provider_name)s account to login to\n"
+"%(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+
+#: .\templates\users\followings_list.html:10
+msgid "Followings List"
+msgstr "Takip Edilenler"
+
+#: .\templates\users\followings_list.html:15
+msgid "You are following"
+msgstr "Takip ettiğin kişi sayısı"
+
+#: .\templates\users\followings_list.html:15
+#, fuzzy
+#| msgid "Profile"
+msgid "profile"
+msgstr "."
+
+#: .\templates\users\followings_list.html:69 .\templates\users\friends.html:70
+#, fuzzy
+#| msgid "Profile"
+msgid "Go Profile"
+msgstr "Profilim"
+
+#: .\templates\users\login.html:63
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: .\templates\users\login.html:67
+msgid "Password"
+msgstr "Şifre"
+
+#: .\templates\users\login.html:76
+msgid "Forgot password "
+msgstr "Şifremi unuttum"
+
+#: .\templates\users\login.html:86
+msgid "Or"
+msgstr "Veya"
+
+#: .\templates\users\logout.html:11
+msgid "You logged out"
+msgstr "Çıkış yaptınız"
+
+#: .\templates\users\profile.html:50
+#, fuzzy
+#| msgid "Edit Post"
+msgid "Update Email"
+msgstr "Gönderiyi düzenle"
+
+#: .\templates\users\profile.html:51
+#, fuzzy
+#| msgid "Delete Post"
+msgid "Delete Email"
+msgstr "Gönderiyi Sil"
+
+#: .\templates\users\profile.html:56 .\templates\users\profile.html:65
+msgid "Save"
+msgstr "Kaydet"
+
+#: .\templates\users\profile.html:61
+msgid "EmailBtn"
+msgstr "E posta ekleyin"
+
+#: .\templates\users\profile.html:153 .\templates\users\user_profile.html:227
+msgid "No post found"
+msgstr "Gönderi Bulunamadı"
+
+#: .\templates\users\register.html:25
+msgid "Have an account?"
+msgstr "Hesabın var mı?"
+
+#: .\templates\users\settings.html:73
+msgid ""
+"If you turn Private on nobody can add you to friends. Instead of they can "
+"send you request "
+msgstr ""
+"Eğer özel olarak ayarlarsanız hiç kimse sizi arkadaşlarınıza ekleyemez. Onun "
+"yerine ise size istek gönderebilirler."
+
+#: .\templates\users\settings.html:81
+msgid "Turn on to hide online statue"
+msgstr "Online durumunu gizlemek için açın"
+
+#: .\templates\users\settings.html:89
+msgid ""
+"If you don't want everyone to see your posts. Turn on to let only friends"
+msgstr ""
+"Eğer herkesin gönderilerinizi görebilmesini istemiyorsanız açın. "
+"Gönderilrinizi sadece arkadaşlarınız görebilir."
+
+#: .\templates\users\user_profile.html:4
+#, fuzzy
+#| msgid "Profile"
+msgid "Profile of "
+msgstr "Profilim"
+
+#: .\templates\users\user_profile.html:83
+msgid "gizli"
+msgstr ""
+
+#~ msgid "Click to create one"
+#~ msgstr "Kayıt olmak için tıklayın"

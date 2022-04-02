@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% translate "Notifications" %}{% endblock title %}
+{% block content %}
+
+
+            
+            <!-- Start Content Page Box Area -->
+            <div class="content-page-box-area">
+                <div class="all-notifications-body">
+                    <div class="all-notifications-header d-flex justify-content-between align-items-center">
+                        <h3>{% translate "Notifications" %}</h3>
+                        
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-menu"></i></button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'delete_all_notifications' %}"><i class="flaticon-trash"></i> Delete Notifications</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% if not notifs == 'None' %}
+
+                    {% for notif in notifs  %}
+                        <div class="item d-flex justify-content-between align-items-center">
+                            <div class="figure">
+                                <a href="{% url 'user_profiles' notif.from_user.profile.user.username %}"><img src="{{notif.from_user.profile.pp}}" class="rounded-circle" alt="image"></a>
+                            </div>
+                            <div class="text">
+                                <h4><a href="{% url 'user_profiles' notif.from_user.profile.user.username %}">{{notif.from_user.profile.user.username}}</a></h4>
+                                {% if notif.notification_type == 'friend_now' %}
+                                    <span>{% translate "You are friend now." %}</span>
+
+                                {% elif notif.notification_type == 'friend_request' %}
+                                    <span>{% translate "Sent you friend request." %}</span>
+
+                                {% elif notif.notification_type == 'follow' %}
+                                    <span>{% translate "Followed You." %}</span>
+                                {% else %}
+
+                                {% endif %}
+                                <span class="main-color">{{notif.date_added|date:'D d/m/Y'}}</span>
+                            </div>
+                            
+                        </div>
+                       
+                    {% endfor %}
+                    {% else %}
+                    <div class="item d-flex justify-content-between align-items-center">
+                         <h1>{% translate "No Notification" %}</h1>
+                        
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+            <!-- End Content Page Box Area -->
+
+
+        </div>
+        <!-- End Main Content Wrapper Area -->
+    {% endblock content %}
