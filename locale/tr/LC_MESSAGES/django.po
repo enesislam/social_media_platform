@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-02 09:54+0300\n"
+"POT-Creation-Date: 2022-04-04 13:24+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,8 +34,8 @@ msgstr "Tarih"
 msgid "User of Post"
 msgstr "Post sahibi"
 
-#: .\core\models.py:23 .\core\models.py:76 .\core\models.py:85
-#: .\core\models.py:96 .\core\models.py:109
+#: .\core\models.py:23 .\core\models.py:96 .\core\models.py:105
+#: .\core\models.py:116 .\core\models.py:129
 msgid "Date Added"
 msgstr "Tarih"
 
@@ -44,53 +44,21 @@ msgstr "Tarih"
 msgid "Hashtags"
 msgstr "Hashtagler"
 
-#: .\core\views.py:29
+#: .\core\views.py:28
 msgid "Post created successfully"
 msgstr "Gönderi oluşturuldu"
 
-#: .\core\views.py:54
+#: .\core\views.py:57
 msgid "Post deleted successfully"
 msgstr "Gönderi silindi"
 
-#: .\core\views.py:95
+#: .\core\views.py:98
 msgid "Mail is deleted successfully"
 msgstr "E-posta başarı ile eklendi"
 
-#: .\core\views.py:104
+#: .\core\views.py:107
 msgid "Mail is updated successfully"
 msgstr "E-posta başarı ile eklendi"
-
-#: .\core\views.py:114
-msgid "Profile picture is updated successfully"
-msgstr "Gönderi oluşturuldu"
-
-#: .\core\views.py:194 .\core\views.py:233
-msgid "Notifications are read"
-msgstr "Bildirimler okundu"
-
-#: .\core\views.py:197 .\core\views.py:236
-msgid "No notifications"
-msgstr "Bildirim yok"
-
-#: .\core\views.py:221
-msgid "All notifications are deleted"
-msgstr "Tüm bildirimler silindi"
-
-#: .\core\views.py:374
-msgid "Your profile is now private"
-msgstr "Profil gizli olarak ayarlandı"
-
-#: .\core\views.py:379 .\core\views.py:390 .\core\views.py:401
-msgid "Your profile is now public"
-msgstr "Profilin şimdi genel bir şekilde ayarlandı"
-
-#: .\core\views.py:385
-msgid "You are a ghost now"
-msgstr "Artık bir hayaletsin"
-
-#: .\core\views.py:396
-msgid "Your profile is now restricted to friends"
-msgstr "Profilin artık sadece arkadaşlara açık"
 
 #: .\main\settings.py:133
 msgid "English"
@@ -272,8 +240,6 @@ msgstr ""
 
 #: .\templates\account\login.html:42
 #: .\templates\account\password_change.html:14
-#, fuzzy
-#| msgid "Forgot password "
 msgid "Forgot Password?"
 msgstr "Şifremi unuttum"
 
@@ -312,20 +278,14 @@ msgid "Successfully signed in as %(name)s."
 msgstr "Başarıyla %(name)s olarak giriş yaptınız."
 
 #: .\templates\account\messages\logged_out.txt:2
-#, fuzzy
-#| msgid "You logged out"
 msgid "You have signed out."
 msgstr "Çıkış yaptınız"
 
 #: .\templates\account\messages\password_changed.txt:2
-#, fuzzy
-#| msgid "Post created successfully"
 msgid "Password successfully changed."
 msgstr "Gönderi oluşturuldu"
 
 #: .\templates\account\messages\password_set.txt:2
-#, fuzzy
-#| msgid "Post created successfully"
 msgid "Password successfully set."
 msgstr "Gönderi oluşturuldu"
 
@@ -344,8 +304,6 @@ msgstr ""
 #: .\templates\account\password_reset_from_key.html:7
 #: .\templates\account\password_reset_from_key_done.html:4
 #: .\templates\account\password_reset_from_key_done.html:7
-#, fuzzy
-#| msgid "Password"
 msgid "Change Password"
 msgstr "Şifre"
 
@@ -353,8 +311,6 @@ msgstr "Şifre"
 #: .\templates\account\password_reset.html:10
 #: .\templates\account\password_reset_done.html:6
 #: .\templates\account\password_reset_done.html:9
-#, fuzzy
-#| msgid "Password"
 msgid "Password Reset"
 msgstr "Şifre"
 
@@ -365,10 +321,8 @@ msgid ""
 msgstr ""
 
 #: .\templates\account\password_reset.html:20
-#, fuzzy
-#| msgid "Password"
 msgid "Reset My Password"
-msgstr "Şifre"
+msgstr "Şifremi Sıfırla"
 
 #: .\templates\account\password_reset.html:23
 msgid "Please contact us if you have any trouble resetting your password."
@@ -393,8 +347,6 @@ msgid ""
 msgstr ""
 
 #: .\templates\account\password_reset_from_key.html:16
-#, fuzzy
-#| msgid "Forgot password "
 msgid "change password"
 msgstr "Şifremi unuttum"
 
@@ -405,10 +357,8 @@ msgstr ""
 #: .\templates\account\password_set.html:5
 #: .\templates\account\password_set.html:8
 #: .\templates\account\password_set.html:13
-#, fuzzy
-#| msgid "Password"
 msgid "Set Password"
-msgstr "Şifre"
+msgstr "Şifre Belirle"
 
 #: .\templates\account\signup.html:5 .\templates\socialaccount\signup.html:5
 msgid "Signup"
@@ -482,75 +432,82 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: .\templates\base.html:103 .\templates\notifications.html:33
+#: .\templates\base.html:90 .\templates\base.html:398
+#: .\templates\notifications.html:5 .\templates\notifications.html:14
+msgid "Notifications"
+msgstr "Bildirimler"
+
+#: .\templates\base.html:102 .\templates\notifications.html:33
 msgid "You are friend now."
 msgstr "Artık arkadaşsınız"
 
-#: .\templates\base.html:106
+#: .\templates\base.html:105
 msgid "Followed you."
 msgstr "Seni takip etti"
 
-#: .\templates\base.html:114
+#: .\templates\base.html:113
 msgid "View All Notifications"
 msgstr "Tüm Bildirimleri gör"
 
-#: .\templates\base.html:234 .\templates\base.html:325
+#: .\templates\base.html:136
+msgid "Friend Requests"
+msgstr "Arkadaş İstekleri"
+
+#: .\templates\base.html:164
+msgid "View All Requests"
+msgstr "Tüm istekleri gör"
+
+#: .\templates\base.html:233 .\templates\base.html:324
 #: .\templates\users\profile.html:4
 msgid "My Profile"
 msgstr "Profilim"
 
-#: .\templates\base.html:235 .\templates\base.html:326
+#: .\templates\base.html:234 .\templates\base.html:325
 msgid "Setting"
 msgstr "Ayarlar"
 
-#: .\templates\base.html:236 .\templates\base.html:327
-#: .\templates\base.html:412
+#: .\templates\base.html:235 .\templates\base.html:326
+#: .\templates\base.html:411
 msgid "Logout"
 msgstr "Çıkış Yap"
 
-#: .\templates\base.html:238 .\templates\base.html:332
-#: .\templates\base.html:419 .\templates\users\register.html:44
+#: .\templates\base.html:237 .\templates\base.html:331
+#: .\templates\base.html:418 .\templates\users\register.html:39
+#: .\templates\users\register.html:44
 msgid "Register"
 msgstr "Kayıt Ol"
 
-#: .\templates\base.html:239 .\templates\base.html:333
-#: .\templates\base.html:426 .\templates\users\login.html:59
-#: .\templates\users\login.html:79 .\templates\users\logout.html:14
+#: .\templates\base.html:238 .\templates\base.html:332
+#: .\templates\base.html:425 .\templates\users\login.html:55
+#: .\templates\users\login.html:75 .\templates\users\logout.html:14
 #: .\templates\users\register.html:26
 msgid "Login"
 msgstr "Giriş Yap"
 
-#: .\templates\base.html:344
+#: .\templates\base.html:343
 msgid "Search"
 msgstr "Aradığınız kelimeyi giriniz"
 
-#: .\templates\base.html:371 .\templates\home.html:4
+#: .\templates\base.html:370 .\templates\home.html:4
 #: .\templates\users\logout.html:15
 msgid "Home"
 msgstr "Anasayfa"
 
-#: .\templates\base.html:381
+#: .\templates\base.html:380
 msgid "Profile"
 msgstr "Profilim"
 
-#: .\templates\base.html:387 .\templates\users\friends.html:4
+#: .\templates\base.html:386 .\templates\users\friends.html:4
 #: .\templates\users\friends.html:11 .\templates\users\friends.html:16
 msgid "Friends"
 msgstr "Arkadaşlar"
 
-#: .\templates\base.html:393
+#: .\templates\base.html:392
 msgid "Followings"
 msgstr "Takip edilenler"
 
-#: .\templates\base.html:399 .\templates\notifications.html:5
-#: .\templates\notifications.html:14
-msgid "Notifications"
-msgstr "Bildirimler"
-
-#: .\templates\base.html:405 .\templates\users\settings.html:3
+#: .\templates\base.html:404 .\templates\users\settings.html:3
 #: .\templates\users\settings.html:62
-#, fuzzy
-#| msgid "Setting"
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -579,8 +536,6 @@ msgid "Here is another post related with"
 msgstr "Bu hashtag ile alakalı olabilecek başka bir gönderi"
 
 #: .\templates\hashtag.html:88
-#, fuzzy
-#| msgid "No post created yet"
 msgid "Here is some posts related with"
 msgstr "Henüz bir gönderi oluşturulmadı."
 
@@ -594,7 +549,7 @@ msgid "View Profile"
 msgstr "Profilim"
 
 #: .\templates\home.html:40 .\templates\post-detail.html:13
-#: .\templates\post_update.html:40
+#: .\templates\post_update.html:40 .\templates\users\profile.html:99
 msgid "Advertisement"
 msgstr "Reklam"
 
@@ -646,7 +601,7 @@ msgstr "Sana arkadaşlık isteği gönderdi"
 msgid "Followed You."
 msgstr "Seni takip etti"
 
-#: .\templates\notifications.html:51
+#: .\templates\notifications.html:51 .\templates\notifications.html:76
 msgid "No Notification"
 msgstr "Bildirim yok"
 
@@ -655,20 +610,14 @@ msgid "This post is not available anymore"
 msgstr "Bu gönderi artık mevcut değil"
 
 #: .\templates\post_update.html:4 .\templates\post_update.html:59
-#, fuzzy
-#| msgid "Edit Post"
 msgid "Update Post"
 msgstr "Gönderiyi düzenle"
 
 #: .\templates\search_results.html:4
-#, fuzzy
-#| msgid "Search"
 msgid "Search for"
 msgstr "Aradığınız kelimeyi giriniz"
 
 #: .\templates\search_results.html:23
-#, fuzzy
-#| msgid "There is no hashtag with this word."
 msgid "There is no result with this word."
 msgstr "Bu kelime ile hashtag yok"
 
@@ -723,8 +672,8 @@ msgstr "%(provider)s ile devam et"
 msgid "You are about to sign in using an account from %(provider)s."
 msgstr "Şuanda %(provider)s hesabınızla giriş yapıyorsunuz."
 
-#: .\templates\socialaccount\login.html:58 .\templates\users\login.html:102
-#: .\templates\users\login.html:115
+#: .\templates\socialaccount\login.html:58 .\templates\users\login.html:92
+#: .\templates\users\login.html:99
 msgid "Continue with"
 msgstr "Şununla devam et"
 
@@ -769,30 +718,26 @@ msgid "You are following"
 msgstr "Takip ettiğin kişi sayısı"
 
 #: .\templates\users\followings_list.html:15
-#, fuzzy
-#| msgid "Profile"
 msgid "profile"
 msgstr "."
 
 #: .\templates\users\followings_list.html:69 .\templates\users\friends.html:70
-#, fuzzy
-#| msgid "Profile"
 msgid "Go Profile"
 msgstr "Profilim"
 
-#: .\templates\users\login.html:63
+#: .\templates\users\login.html:59
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: .\templates\users\login.html:67
+#: .\templates\users\login.html:63
 msgid "Password"
 msgstr "Şifre"
 
-#: .\templates\users\login.html:76
+#: .\templates\users\login.html:72
 msgid "Forgot password "
 msgstr "Şifremi unuttum"
 
-#: .\templates\users\login.html:86
+#: .\templates\users\login.html:82
 msgid "Or"
 msgstr "Veya"
 
@@ -801,16 +746,12 @@ msgid "You logged out"
 msgstr "Çıkış yaptınız"
 
 #: .\templates\users\profile.html:50
-#, fuzzy
-#| msgid "Edit Post"
 msgid "Update Email"
-msgstr "Gönderiyi düzenle"
+msgstr "E-Postayı düzenle"
 
 #: .\templates\users\profile.html:51
-#, fuzzy
-#| msgid "Delete Post"
 msgid "Delete Email"
-msgstr "Gönderiyi Sil"
+msgstr "E-Postayı Sil"
 
 #: .\templates\users\profile.html:56 .\templates\users\profile.html:65
 msgid "Save"
@@ -828,34 +769,56 @@ msgstr "Gönderi Bulunamadı"
 msgid "Have an account?"
 msgstr "Hesabın var mı?"
 
-#: .\templates\users\settings.html:73
-msgid ""
-"If you turn Private on nobody can add you to friends. Instead of they can "
-"send you request "
-msgstr ""
-"Eğer özel olarak ayarlarsanız hiç kimse sizi arkadaşlarınıza ekleyemez. Onun "
-"yerine ise size istek gönderebilirler."
-
-#: .\templates\users\settings.html:81
-msgid "Turn on to hide online statue"
-msgstr "Online durumunu gizlemek için açın"
-
-#: .\templates\users\settings.html:89
-msgid ""
-"If you don't want everyone to see your posts. Turn on to let only friends"
-msgstr ""
-"Eğer herkesin gönderilerinizi görebilmesini istemiyorsanız açın. "
-"Gönderilrinizi sadece arkadaşlarınız görebilir."
-
 #: .\templates\users\user_profile.html:4
-#, fuzzy
-#| msgid "Profile"
 msgid "Profile of "
 msgstr "Profilim"
 
 #: .\templates\users\user_profile.html:83
 msgid "gizli"
 msgstr ""
+
+#~ msgid "secret"
+#~ msgstr "gizli"
+
+#~ msgid "Profile picture is updated successfully"
+#~ msgstr "Gönderi oluşturuldu"
+
+#~ msgid "Notifications are read"
+#~ msgstr "Bildirimler okundu"
+
+#~ msgid "No notifications"
+#~ msgstr "Bildirim yok"
+
+#~ msgid "All notifications are deleted"
+#~ msgstr "Tüm bildirimler silindi"
+
+#~ msgid "Your profile is now private"
+#~ msgstr "Profil gizli olarak ayarlandı"
+
+#~ msgid "Your profile is now public"
+#~ msgstr "Profilin şimdi genel bir şekilde ayarlandı"
+
+#~ msgid "You are a ghost now"
+#~ msgstr "Artık bir hayaletsin"
+
+#~ msgid "Your profile is now restricted to friends"
+#~ msgstr "Profilin artık sadece arkadaşlara açık"
+
+#~ msgid ""
+#~ "If you turn Private on nobody can add you to friends. Instead of they can "
+#~ "send you request "
+#~ msgstr ""
+#~ "Eğer özel olarak ayarlarsanız hiç kimse sizi arkadaşlarınıza ekleyemez. "
+#~ "Onun yerine ise size istek gönderebilirler."
+
+#~ msgid "Turn on to hide online statue"
+#~ msgstr "Online durumunu gizlemek için açın"
+
+#~ msgid ""
+#~ "If you don't want everyone to see your posts. Turn on to let only friends"
+#~ msgstr ""
+#~ "Eğer herkesin gönderilerinizi görebilmesini istemiyorsanız açın. "
+#~ "Gönderilrinizi sadece arkadaşlarınız görebilir."
 
 #~ msgid "Click to create one"
 #~ msgstr "Kayıt olmak için tıklayın"

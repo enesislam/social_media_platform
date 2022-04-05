@@ -16,7 +16,7 @@
                         <div class="dropdown">
                             <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-menu"></i></button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'delete_all_notifications' %}"><i class="flaticon-trash"></i> Delete Notifications</a></li>
+                                <li><a style="cursor:pointer;" class="dropdown-item sil d-flex align-items-center"><i class="flaticon-trash"></i> Delete Notifications</a></li>
                             </ul>
                         </div>
                     </div>
@@ -61,3 +61,29 @@
         </div>
         <!-- End Main Content Wrapper Area -->
     {% endblock content %}
+    {% block js %}
+    <script>
+        $('.sil').click(function(){
+            $.ajax({
+                type: "DELETE",
+                url: "{% url 'delete_all_notifications' %}",
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                dataType: "json",
+                success: function(response) {
+                     if(response.info=='Notifications are deleted'){
+                        $('.all-notifications-body').html('<div class="item d-flex justify-content-between align-items-center"><h1>{% translate "No Notification" %}</h1></div>');
+                     console.log(response.info)
+                     }
+                     else{
+                        console.log(response.info)
+                     }
+                 },
+                 error: function(rs, e) {
+                  console.log('error')
+                 }
+           }); 
+        });
+    </script>
+    {% endblock js %}

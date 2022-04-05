@@ -47,8 +47,8 @@
                                     <br>
                                     <form method="POST">
                                         {% csrf_token %}
-                                        <small style="cursor:pointer;border-radius:10px;background-color:#0d6efd;color:white; padding:4px;-webkit-user-select: none;" id="add-email">{% translate  'Update Email' %}</small>
-                                        <button style="border:none; cursor:pointer;border-radius:10px;background-color: red;color:white; padding:4px;-webkit-user-select: none;" id="add-email" name="delete_email" type>{% translate  'Delete Email' %}</button>
+                                        <button style="border:none; cursor:pointer;border-radius:10px;background-color:  #0d6efd;color:white; padding:6px;-webkit-user-select: none;" id="add-email">{% translate  'Update Email' %}</button>
+                                        <button style="border:none; cursor:pointer;border-radius:10px;background-color: red;color:white; padding:6px;-webkit-user-select: none;" id="add-email" name="delete_email" type>{% translate  'Delete Email' %}</button>
                                     </form>
                                     <form id="add-email-form" style="display:none;" method="POST" >
                                     {% csrf_token %}
@@ -96,7 +96,7 @@
                             <div class="col-lg-3 col-md-12">
                                 <aside class="widget-area">
                                     <div class="widget widget-advertisement">
-                                        <h3 class="widget-title">Advertisement</h3>
+                                        <h3 class="widget-title">{% translate "Advertisement" %}</h3>
         
                                         <div class="advertisement-image">
                                             <a href="#"><img src="{% static 'images/advertisement.jpg' %} " alt="image"></a>
@@ -184,7 +184,7 @@
              
                     $.ajax({
                         method: "POST",
-                        url: "{% url 'profile' %}",
+                        url: "{% url 'AddProfilePicture' %}",
                         processData: false,
                         contentType: false,
                         mimeType: "multipart/form-data",

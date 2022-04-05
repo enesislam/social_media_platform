@@ -62,37 +62,15 @@
     <h1>{% translate "Settings" %}</h1>
 
     <div style="text-align:right;margin-left:25px;margin-top:-5px;">
+      <div style="text-align:right;margin-left:25px;margin-top:-5px;">
         <div class="form">
             <form method="POST" class="form"><br><br>
                 {% csrf_token %}
-                <label class="formm-control">
-                    
-                    <input type="checkbox" name="is_private" {% if is_private %}checked{% endif %}  />
-                    <small>Turn <i style="background-color:#8FF7A7;color:black" > Private Account</i>  on</small>
-                </label>
-                <br><p style="text-align:left";>{% translate "If you turn Private on nobody can add you to friends. Instead of they can send you request " %}</p>
-                <br>
-                <hr>
-                <label class="formm-control">
-                    
-                  <input type="checkbox" name="hide_is_online" {% if hide_is_online %}checked{% endif %}  />
-                  <small>Hide <i style="background-color:#8FF7A7;color:black" > Online Statue</i> </small>
-              </label>
-              <br><p>{% translate "Turn on to hide online statue" %}</p>
-              <br>
-              <hr>
-              <label class="formm-control">
-                    
-                <input type="checkbox" name="only_friends" {% if only_friends %}checked{% endif %}  />
-                <small>Only <i style="background-color:#8FF7A7;color:black" > Friends</i></small>
-            </label>
-            <br><p>{% translate "If you don't want everyone to see your posts. Turn on to let only friends" %}</p>
-            <hr>
-            
-                <input style="background-color:white;" class="formm-control"  type="submit" value="Save">
-            
+                  {{form}}
+                <input style="background-color:white;" class="formm-control"  type="submit" value="{% translate "Save" %}">
             </form>
-            </div>
+        </div>
+    </div> 
     </div>  
 </div>
 

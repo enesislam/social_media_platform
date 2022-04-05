@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-02 09:54+0300\n"
+"POT-Creation-Date: 2022-04-04 13:24+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,8 +34,8 @@ msgstr "Date added"
 msgid "User of Post"
 msgstr "User of Post"
 
-#: .\core\models.py:23 .\core\models.py:76 .\core\models.py:85
-#: .\core\models.py:96 .\core\models.py:109
+#: .\core\models.py:23 .\core\models.py:96 .\core\models.py:105
+#: .\core\models.py:116 .\core\models.py:129
 msgid "Date Added"
 msgstr "Tarih"
 
@@ -44,52 +44,20 @@ msgstr "Tarih"
 msgid "Hashtags"
 msgstr "Hashtag"
 
-#: .\core\views.py:29
+#: .\core\views.py:28
 msgid "Post created successfully"
 msgstr ""
 
-#: .\core\views.py:54
+#: .\core\views.py:57
 msgid "Post deleted successfully"
 msgstr ""
 
-#: .\core\views.py:95
+#: .\core\views.py:98
 msgid "Mail is deleted successfully"
 msgstr ""
 
-#: .\core\views.py:104
+#: .\core\views.py:107
 msgid "Mail is updated successfully"
-msgstr ""
-
-#: .\core\views.py:114
-msgid "Profile picture is updated successfully"
-msgstr ""
-
-#: .\core\views.py:194 .\core\views.py:233
-msgid "Notifications are read"
-msgstr ""
-
-#: .\core\views.py:197 .\core\views.py:236
-msgid "No notifications"
-msgstr ""
-
-#: .\core\views.py:221
-msgid "All notifications are deleted"
-msgstr ""
-
-#: .\core\views.py:374
-msgid "Your profile is now private"
-msgstr ""
-
-#: .\core\views.py:379 .\core\views.py:390 .\core\views.py:401
-msgid "Your profile is now public"
-msgstr ""
-
-#: .\core\views.py:385
-msgid "You are a ghost now"
-msgstr ""
-
-#: .\core\views.py:396
-msgid "Your profile is now restricted to friends"
 msgstr ""
 
 #: .\main\settings.py:133
@@ -476,72 +444,81 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: .\templates\base.html:103 .\templates\notifications.html:33
+#: .\templates\base.html:90 .\templates\base.html:398
+#: .\templates\notifications.html:5 .\templates\notifications.html:14
+msgid "Notifications"
+msgstr ""
+
+#: .\templates\base.html:102 .\templates\notifications.html:33
 msgid "You are friend now."
 msgstr ""
 
-#: .\templates\base.html:106
+#: .\templates\base.html:105
 msgid "Followed you."
 msgstr ""
 
-#: .\templates\base.html:114
+#: .\templates\base.html:113
 msgid "View All Notifications"
 msgstr ""
 
-#: .\templates\base.html:234 .\templates\base.html:325
+#: .\templates\base.html:136
+msgid "Friend Requests"
+msgstr ""
+
+#: .\templates\base.html:164
+msgid "View All Requests"
+msgstr ""
+
+#: .\templates\base.html:233 .\templates\base.html:324
 #: .\templates\users\profile.html:4
 msgid "My Profile"
 msgstr ""
 
-#: .\templates\base.html:235 .\templates\base.html:326
+#: .\templates\base.html:234 .\templates\base.html:325
 msgid "Setting"
 msgstr ""
 
-#: .\templates\base.html:236 .\templates\base.html:327
-#: .\templates\base.html:412
+#: .\templates\base.html:235 .\templates\base.html:326
+#: .\templates\base.html:411
 msgid "Logout"
 msgstr ""
 
-#: .\templates\base.html:238 .\templates\base.html:332
-#: .\templates\base.html:419 .\templates\users\register.html:44
+#: .\templates\base.html:237 .\templates\base.html:331
+#: .\templates\base.html:418 .\templates\users\register.html:39
+#: .\templates\users\register.html:44
 msgid "Register"
 msgstr ""
 
-#: .\templates\base.html:239 .\templates\base.html:333
-#: .\templates\base.html:426 .\templates\users\login.html:59
-#: .\templates\users\login.html:79 .\templates\users\logout.html:14
+#: .\templates\base.html:238 .\templates\base.html:332
+#: .\templates\base.html:425 .\templates\users\login.html:55
+#: .\templates\users\login.html:75 .\templates\users\logout.html:14
 #: .\templates\users\register.html:26
 msgid "Login"
 msgstr ""
 
-#: .\templates\base.html:344
+#: .\templates\base.html:343
 msgid "Search"
 msgstr "Search"
 
-#: .\templates\base.html:371 .\templates\home.html:4
+#: .\templates\base.html:370 .\templates\home.html:4
 #: .\templates\users\logout.html:15
 msgid "Home"
 msgstr "Home"
 
-#: .\templates\base.html:381
+#: .\templates\base.html:380
 msgid "Profile"
 msgstr ""
 
-#: .\templates\base.html:387 .\templates\users\friends.html:4
+#: .\templates\base.html:386 .\templates\users\friends.html:4
 #: .\templates\users\friends.html:11 .\templates\users\friends.html:16
 msgid "Friends"
 msgstr ""
 
-#: .\templates\base.html:393
+#: .\templates\base.html:392
 msgid "Followings"
 msgstr ""
 
-#: .\templates\base.html:399 .\templates\notifications.html:5
-#: .\templates\notifications.html:14
-msgid "Notifications"
-msgstr ""
-
-#: .\templates\base.html:405 .\templates\users\settings.html:3
+#: .\templates\base.html:404 .\templates\users\settings.html:3
 #: .\templates\users\settings.html:62
 msgid "Settings"
 msgstr ""
@@ -588,7 +565,7 @@ msgid "View Profile"
 msgstr "View Profile"
 
 #: .\templates\home.html:40 .\templates\post-detail.html:13
-#: .\templates\post_update.html:40
+#: .\templates\post_update.html:40 .\templates\users\profile.html:99
 msgid "Advertisement"
 msgstr ""
 
@@ -646,7 +623,7 @@ msgstr ""
 msgid "Followed You."
 msgstr ""
 
-#: .\templates\notifications.html:51
+#: .\templates\notifications.html:51 .\templates\notifications.html:76
 msgid "No Notification"
 msgstr ""
 
@@ -722,8 +699,8 @@ msgstr ""
 msgid "You are about to sign in using an account from %(provider)s."
 msgstr ""
 
-#: .\templates\socialaccount\login.html:58 .\templates\users\login.html:102
-#: .\templates\users\login.html:115
+#: .\templates\socialaccount\login.html:58 .\templates\users\login.html:92
+#: .\templates\users\login.html:99
 msgid "Continue with"
 msgstr ""
 
@@ -779,19 +756,19 @@ msgstr "View Profile"
 msgid "Go Profile"
 msgstr "View Profile"
 
-#: .\templates\users\login.html:63
+#: .\templates\users\login.html:59
 msgid "Username"
 msgstr "Username"
 
-#: .\templates\users\login.html:67
+#: .\templates\users\login.html:63
 msgid "Password"
 msgstr "Password"
 
-#: .\templates\users\login.html:76
+#: .\templates\users\login.html:72
 msgid "Forgot password "
 msgstr "Forgot password"
 
-#: .\templates\users\login.html:86
+#: .\templates\users\login.html:82
 msgid "Or"
 msgstr ""
 
@@ -825,21 +802,6 @@ msgstr "No post found"
 
 #: .\templates\users\register.html:25
 msgid "Have an account?"
-msgstr ""
-
-#: .\templates\users\settings.html:73
-msgid ""
-"If you turn Private on nobody can add you to friends. Instead of they can "
-"send you request "
-msgstr ""
-
-#: .\templates\users\settings.html:81
-msgid "Turn on to hide online statue"
-msgstr ""
-
-#: .\templates\users\settings.html:89
-msgid ""
-"If you don't want everyone to see your posts. Turn on to let only friends"
 msgstr ""
 
 #: .\templates\users\user_profile.html:4

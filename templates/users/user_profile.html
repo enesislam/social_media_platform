@@ -325,9 +325,13 @@ btnn:hover{
                 //Follow Action 
                 $('#follow').click(function(){
                 $.ajax({
-                        type: "POST",
+                        type: "PUT",
                         url: "{% url 'follow' %}",
-                        data: {'username': $(this).attr('name'), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                        
+                        headers: {
+                            'X-CSRFToken': '{{csrf_token}}'
+                        },
+                        data: {'username': $(this).attr('name')},
                         dataType: "json",
                         success: function(response) {
                             if(response.followed==true){

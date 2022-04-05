@@ -87,7 +87,7 @@
                                         </a>
                                         <div class="dropdown-menu">
                                             <div class="notifications-header d-flex justify-content-between align-items-center">
-                                                <h3>Notifications</h3>
+                                                <h3>{% translate "Notifications" %}</h3>
                                                 <a href="{% url 'notifications_list' %}">  <i class="flaticon-menu"></i></a>
                                             </div>
                                             <div class="notifications-body" data-simplebar>   
@@ -124,7 +124,7 @@
                                                  
                                         {% if friend_req_new_notifs_count == False %}
                                         {% else %}
-                                        <span id="notf_count">{{friend_req_new_notifs_count}}</span>
+                                        <span id="f_notf_count">{{friend_req_new_notifs_count}}</span>
                                         {% endif %}
 
                                         
@@ -133,7 +133,7 @@
             
                                         <div class="dropdown-menu">
                                             <div class="friend-requests-header d-flex justify-content-between align-items-center">
-                                                <h3>Friend Requests</h3>
+                                                <h3>{% translate "Friend Requests" %}</h3>
                                                 <a href="{% url 'notifications_list' %}"><i class="flaticon-menu"></i></a>
                                             </div>
 
@@ -161,7 +161,7 @@
                                                 {% endfor %}
                                                 
                                                 <div class="view-all-requests-btn">
-                                                    <a href="{% url 'notifications_list' %}" class="default-btn">View All Requests</a>
+                                                    <a href="{% url 'notifications_list' %}" class="default-btn">{% translate "View All Requests" %}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -476,11 +476,12 @@
                     data: {'csrfmiddlewaretoken': '{{ csrf_token }}'},
                     dataType: "json",
                     success: function(response) {
-                         if(response.there_are_notifications==true){
+                         if(response.is_there==true){
+                         $( "#notf_count" ).hide();
                          $( "#notf_count" ).hide();
                          console.log(response.info)
                          }
-                         else if(response.there_are_notifications==false){
+                         else if(response.is_there==false){
                            console.log(response.info)
                          }
                      },
@@ -498,11 +499,11 @@
                     data: {'csrfmiddlewaretoken': '{{ csrf_token }}'},
                     dataType: "json",
                     success: function(response) {
-                         if(response.there_are_friend_notifications==true){
-                         $( "#notf_count" ).hide();
+                         if(response.is_there==true){
+                         $( "#f_notf_count" ).hide();
                          console.log(response.info)
                          }
-                         else if(response.there_are_friend_notifications==false){
+                         else if(response.is_there==false){
                            console.log(response.info)
                          }
                      },
@@ -541,17 +542,19 @@
         <script>
             $('.delete_friend_request').click(function(){
                 $.ajax({
-                    type: "POST",
+                    type: "DELETE",
                     url: "{% url 'delete_friend_request' %}",
-                    data: {'username':$(this).attr('name')  ,'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    data: {'username':$(this).attr('name')},
                     dataType: "json",
                     success: function(response) {
-                        location.reload();
                         
                          if(response.status==true){
                             $( "#proile" ).hide();
                             console.log(response.status)
-
+                            location.reload();
                          }
                          else if(response.status==false){
                            console.log(response.status)

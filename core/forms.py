@@ -21,3 +21,8 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['mail']
         
+
+class ProfileSettingsForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("is_online", "hide_is_online", "only_friends")

@@ -1,7 +1,7 @@
 from gettext import gettext
 from django.db import models
 from django.contrib.auth.models import User
-from django.shortcuts import reverse
+from django.shortcuts import get_object_or_404, reverse
 from django.forms import ValidationError
 from django.utils.translation import gettext as _
 from django.utils.translation import gettext_lazy as _
@@ -55,8 +55,28 @@ class Profile(models.Model):
     
     def total_follows(self):
         return self.followings.count()
-   
-    
+
+
+    def follow(self, user):
+        Notificaton.objects.create(from_user=self.user, to_user=user.profile, notification_type='follow')
+        UserFollowing.objects.create(from_user=self.user, to_user=user)
+        return True
+
+    def unfollow(self,username):
+        Notificaton.objects.get(from_user=self.user, to_user__user__username=username, notification_type="follow").delete()
+        UserFollowing.objects.get(from_user=self.user, to_user__username=username).delete()
+        return False
+
+    def follow_toggle(self, username):
+        profile = get_object_or_404(Profile, user__username=username)  # The profile that wants to be followed
+        that_user = profile.user
+        if self.is_following(username):
+            return self.unfollow(username)
+        return self.follow(that_user)
+
+    def is_following(self, username):
+        return UserFollowing.objects.filter(from_user=self.user, to_user__username=username).exists()
+
     def total_friends(self):
         return self.friends.count()
 
