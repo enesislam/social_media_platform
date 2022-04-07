@@ -11,7 +11,7 @@
      |           Add Profile Picture        |            Edit             |         Connect to Post           |
      |               Add E-Mail             |          Retrieve           |   See other posts with hashtag    |
      |          Follow other accounts       |           Delete            |                                   |
-     |        Add Friend other accounts     |        Create Hashtag       |                                   |
+     |        Add other accounts Friend     |        Create Hashtag       |                                   |
      |      (Send Friend Request            |     (if content includes)   |                                   |
      |        if account is private mode)   |                             |                                   |
      |            See Notifications         |                             |                                   |
