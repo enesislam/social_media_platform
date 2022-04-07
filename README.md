@@ -1,5 +1,5 @@
 # django_app
-                                                            Social Media Project
+                                                    Social Media Project
 
                                                          Actions
                                                            |
@@ -12,7 +12,7 @@
      |               Add E-Mail             |          Retrieve           |   See other posts with hashtag    |
      |          Follow other accounts       |           Delete            |                                   |
      |        Add Friend other accounts     |        Create Hashtag       |                                   |
-     |      (Send Friend Request            |     (if content includes)    |                                   |
+     |      (Send Friend Request            |     (if content includes)   |                                   |
      |        if account is private mode)   |                             |                                   |
      |            See Notifications         |                             |                                   |
      |              Create  Post            |                             |                                   |
