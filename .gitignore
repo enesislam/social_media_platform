@@ -1,2 +1,6 @@
 /.vscode
 /db.sqlite3
+/.env
+/.venv
+/env
+/venv
